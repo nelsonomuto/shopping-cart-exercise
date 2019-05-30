@@ -2,30 +2,27 @@ import React from "react"
 import "../assets/css/cart.css"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { useCart } from "../services/cartService"
 import { dollars } from "../services/formatString"
+import {
+  clearCart,
+  decrementQuantity,
+  incrementQuantity,
+  removeProductFromCart,
+} from "../store/cart/actions"
+import { useCart } from "../store/cart/useCart"
 
-const CartItem = ({ item, onRemove, onUpdateQuantity }) => (
+const CartItem = ({ item, onRemove, onIncrement, onDecrement }) => (
   <div>
     <h4 className="cart-item-title">{item.title}</h4>
     <div className="cart-item-controls">
-      <button
-        className="cart-item-update-qty-button"
-        onClick={() => onUpdateQuantity(item, item.qty > 0 ? item.qty - 1 : 0)}
-      >
+      <button className="cart-item-update-qty-button" onClick={onDecrement}>
         -
       </button>
       <span className="cart-item-qty">{item.qty}</span>
-      <button
-        className="cart-item-update-qty-button"
-        onClick={() => onUpdateQuantity(item, item.qty + 1)}
-      >
+      <button className="cart-item-update-qty-button" onClick={onIncrement}>
         +
       </button>
-      <button
-        className="cart-item-remove-button"
-        onClick={() => onRemove && onRemove(item)}
-      >
+      <button className="cart-item-remove-button" onClick={onRemove}>
         Remove Item
       </button>
     </div>
@@ -33,40 +30,35 @@ const CartItem = ({ item, onRemove, onUpdateQuantity }) => (
 )
 
 const Cart = () => {
-  const {
-    items,
-    subtotal,
-    totalTax,
-    shippingCost,
-    totalCost,
-    removeItem,
-    updateQuantity,
-    clearCart,
-  } = useCart()
+  const [state, dispatch] = useCart()
 
   return (
     <Layout>
       <SEO title="Cart" />
       <h1>Cart</h1>
       <ul>
-        {items.map(item => (
+        {state.items.map(item => (
           <li key={item.sku}>
             <CartItem
               item={item}
-              onRemove={removeItem}
-              onUpdateQuantity={updateQuantity}
+              onRemove={() => dispatch(removeProductFromCart(item))}
+              onIncrement={() => dispatch(incrementQuantity(item))}
+              onDecrement={() => dispatch(decrementQuantity(item))}
             />
           </li>
         ))}
       </ul>
-      <button onClick={clearCart}>Clear Cart</button>
+      <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
       <div className="cart-summary">
-        <div>Subtotal: {dollars(subtotal)}</div>
-        <div>Tax: {dollars(totalTax)}</div>
+        <div>Subtotal: {dollars(state.summary.subtotal)}</div>
+        <div>Tax: {dollars(state.summary.totalTax)}</div>
         <div>
-          Shipping: {shippingCost === 0 ? "FREE" : dollars(shippingCost)}
+          Shipping:{" "}
+          {state.summary.shippingCost === 0
+            ? "FREE"
+            : dollars(state.summary.shippingCost)}
         </div>
-        <div>Total: {dollars(totalCost)}</div>
+        <div>Total: {dollars(state.summary.totalCost)}</div>
       </div>
     </Layout>
   )

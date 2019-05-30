@@ -1,7 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import "../../assets/css/components/product/product-list.css"
-import { useCart } from "../../services/cartService"
+import { addProductToCart } from "../../store/cart/actions"
+import { useCart } from "../../store/cart/useCart"
 
 const ProductList = () => {
   const { allDataJson } = useStaticQuery(
@@ -23,7 +24,7 @@ const ProductList = () => {
     `
   )
 
-  const { addItem } = useCart()
+  const [, dispatch] = useCart()
 
   const Product = product => (
     <div
@@ -37,7 +38,10 @@ const ProductList = () => {
       <div className="product-sku cell small-2">{product.sku}</div>
       <div className="product-price cell small-2">${product.price}</div>
       <div className="product-add-to-cart cell small-2">
-        <button id="add-to-cart" onClick={() => addItem(product)}>
+        <button
+          id="add-to-cart"
+          onClick={() => dispatch(addProductToCart(product))}
+        >
           {" "}
           Add to Cart
         </button>
