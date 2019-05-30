@@ -1,0 +1,16 @@
+.cart-item-title {
+  display: flex;
+}
+.cart-item-controls {
+  display: flex;
+}
+.cart-item-update-qty-button {
+  display: flex;
+}
+.cart-item-qty {
+  display: flex;
+}
+.art-item-remove-button {
+  display: flex;
+  margin-left: 10px;
+}

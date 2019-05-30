@@ -1,8 +1,7 @@
 import React from "react"
-
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 import ProductList from "../components/product/product-list"
+import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
