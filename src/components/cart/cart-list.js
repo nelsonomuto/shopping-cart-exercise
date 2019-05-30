@@ -9,16 +9,16 @@ const CartList = () => {
       <ul>
         {state.items.map(item => (
           <li key={item.sku}>
-            <CartItem
-              item={item}
-              onRemove={() => dispatch(removeProductFromCart(item))}
-              onIncrement={() => dispatch(incrementQuantity(item))}
-              onDecrement={() => dispatch(decrementQuantity(item))}
-            />
+            <CartItem item={item} />
           </li>
         ))}
       </ul>
-      <button onClick={() => dispatch(clearCart())}>Clear Cart</button>
+      <button
+        className="cart-list-clear-button"
+        onClick={() => dispatch(clearCart())}
+      >
+        Clear Cart
+      </button>
     </div>
   )
 }
