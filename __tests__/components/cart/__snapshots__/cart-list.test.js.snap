@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartList /> renders items from localstorage in cart 1`] = `
+<div
+  className="cart-list"
+>
+  <ul>
+    <li
+      key="fake-sku"
+    >
+      <CartItem
+        item={
+          Object {
+            "image": "fake-image-url",
+            "price": 999.99,
+            "qty": 1,
+            "sku": "fake-sku",
+            "title": "fake-title",
+          }
+        }
+      />
+    </li>
+  </ul>
+  <button
+    className="cart-list-clear-button"
+    onClick={[Function]}
+  >
+    Clear Cart
+  </button>
+</div>
+`;

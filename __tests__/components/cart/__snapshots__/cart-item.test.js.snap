@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartItem /> renders items from store in cart 1`] = `
+<div>
+  <h4
+    className="cart-item-title"
+  >
+    fake-title
+  </h4>
+  <div
+    className="cart-item-controls"
+  >
+    <button
+      className="cart-item-update-qty-button"
+      onClick={[Function]}
+    >
+      -
+    </button>
+    <span
+      className="cart-item-qty"
+    >
+      2
+    </span>
+    <button
+      className="cart-item-update-qty-button"
+      onClick={[Function]}
+    >
+      +
+    </button>
+    <button
+      className="cart-item-remove-button"
+      onClick={[Function]}
+    >
+      Remove Item
+    </button>
+  </div>
+</div>
+`;

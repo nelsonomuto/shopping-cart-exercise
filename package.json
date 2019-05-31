@@ -18,6 +18,8 @@
     "babel-jest": "^24.8.0",
     "babel-preset-gatsby": "^0.1.11",
     "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.2",
+    "enzyme-to-json": "^3.3.5",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
     "jooks": "0.0.15",

@@ -1,4 +1,5 @@
 import React from "react"
+import { clearCart } from "../../store/cart/actions"
 import { useCart } from "../../store/cart/useCart"
 import CartItem from "./cart-item"
 

@@ -12,5 +12,7 @@ module.exports = {
     __PATH_PREFIX__: ``,
   },
   testURL: `http://localhost`,
-  setupFiles: [`<rootDir>/loadershim.js`],
+  setupFiles: [`<rootDir>/loadershim.js`, "<rootDir>/enzyme.config.js"],
+  snapshotSerializers: ["enzyme-to-json/serializer"],
+  clearMocks: true,
 }
