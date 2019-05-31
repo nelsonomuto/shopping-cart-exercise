@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CartItem /> renders items from store in cart 1`] = `
+exports[`<CartItem /> matches snapshot 1`] = `
 <div>
   <h4
     className="cart-item-title"
@@ -18,9 +18,7 @@ exports[`<CartItem /> renders items from store in cart 1`] = `
     </button>
     <span
       className="cart-item-qty"
-    >
-      2
-    </span>
+    />
     <button
       className="cart-item-update-qty-button"
       onClick={[Function]}

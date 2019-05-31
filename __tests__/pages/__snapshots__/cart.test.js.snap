@@ -1,18 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CartPage renders cart page component 1`] = `
-<Layout>
-  <SEO
-    description=""
-    keywords={Array []}
-    lang="en"
-    meta={Array []}
-    title="Cart"
-  />
-  <h1>
-    Cart
-  </h1>
-  <CartList />
-  <CartSummary />
-</Layout>
+<CartStoreProvider>
+  <Layout>
+    <SEO
+      description=""
+      keywords={Array []}
+      lang="en"
+      meta={Array []}
+      title="Cart"
+    />
+    <h1>
+      Cart
+    </h1>
+    <CartList />
+    <CartSummary />
+  </Layout>
+</CartStoreProvider>
 `;

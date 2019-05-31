@@ -1,9 +1,9 @@
 import init from "jooks"
 import { addProductToCart } from "../../../src/store/cart/actions"
-import store from "../../../src/store/cart/store"
+import store from "../../../src/store/cart/persistentStore"
 import { useCart } from "../../../src/store/cart/useCart"
 
-jest.mock("../../../src/store/cart/store", () => ({
+jest.mock("../../../src/store/cart/persistentStore", () => ({
   get: jest.fn().mockImplementation(() => []),
   set: jest.fn(),
 }))

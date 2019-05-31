@@ -1,65 +1,56 @@
-import { mount, shallow } from "enzyme"
+import { shallow } from "enzyme"
 import React from "react"
 import CartItem from "../../../src/components/cart/cart-item"
-import store from "../../../src/store/cart/store"
+import {
+  decrementQuantity,
+  incrementQuantity,
+  removeProductFromCart,
+} from "../../../src/store/cart/actions"
 
 const mockItem = {
   sku: "fake-sku",
   title: "fake-title",
   price: 999.99,
   image: "fake-image-url",
-  qty: 2,
 }
 
-const mockItem2 = {
-  sku: "fake-sku2",
-  title: "fake-title2",
-  price: 999.99,
-  image: "fake-image-url2",
-  qty: 1,
+const mockState = {
+  items: [mockItem],
 }
+
+// Mock useCart which is required in the component.
+// Don't test that side effects from useCart actually happen,
+// just test that dispatch is called where needed and that
+// the original state gets rendered.
+const mockDispatch = jest.fn()
+jest.mock("../../../src/store/cart/useCart.js", () => ({
+  useCart: () => [mockState, mockDispatch],
+}))
 
 describe("<CartItem />", () => {
-  afterEach(() => {
-    store.clear()
-  })
-
-  it("renders items from store in cart", () => {
-    store.set([mockItem])
-    const component = shallow(<CartItem {...mockItem} />)
+  it("matches snapshot", () => {
+    const component = shallow(<CartItem item={mockItem} />)
     expect(component).toMatchSnapshot()
   })
 
-  it("clicking decrement button updates item qty", () => {
-    store.set([mockItem])
-    const component = mount(<CartItem {...mockItem} />)
+  it("clicking decrement button calls decrement action", () => {
+    const component = shallow(<CartItem item={mockItem} />)
     const decrementButton = component.find(".cart-item-update-qty-button").at(0)
-    // Trigger quantity update in store on item
     decrementButton.simulate("click")
-    // Store should have been updated
-    const nextItem = store.get()[0]
-    expect(nextItem.qty).toBe(1)
+    expect(mockDispatch).toHaveBeenCalledWith(decrementQuantity(mockItem))
   })
 
-  it("clicking increment button updates item qty", () => {
-    store.set([mockItem])
-    const component = mount(<CartItem {...mockItem} />)
+  it("clicking increment button calls decrement action", () => {
+    const component = shallow(<CartItem item={mockItem} />)
     const incrementButton = component.find(".cart-item-update-qty-button").at(1)
-    // Trigger quantity update in store on item
     incrementButton.simulate("click")
-    // Store should have been updated
-    const nextItem = store.get()[0]
-    expect(nextItem.qty).toBe(3)
+    expect(mockDispatch).toHaveBeenCalledWith(incrementQuantity(mockItem))
   })
 
-  it("clicking remove item removes item from store", () => {
-    store.set([mockItem, mockItem2])
-    const component = mount(<CartItem {...mockItem} />)
+  it("clicking remove item calls remove action", () => {
+    const component = shallow(<CartItem item={mockItem} />)
     const removeButton = component.find(".cart-item-remove-button")
-    // Trigger item remove on store
     removeButton.simulate("click")
-    // Store should have been updated
-    const nextStore = store.get()
-    expect(nextStore).toEqual([mockItem2])
+    expect(mockDispatch).toHaveBeenCalledWith(removeProductFromCart(mockItem))
   })
 })

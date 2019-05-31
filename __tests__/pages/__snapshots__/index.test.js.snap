@@ -1,23 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IndexPage renders correctly 1`] = `
-<Layout>
-  <SEO
-    description=""
-    keywords={
-      Array [
-        "gatsby",
-        "application",
-        "react",
-      ]
-    }
-    lang="en"
-    meta={Array []}
-    title="Products"
-  />
-  <h1>
-    Products
-  </h1>
-  <ProductList />
-</Layout>
+<CartStoreProvider>
+  <Layout>
+    <SEO
+      description=""
+      keywords={
+        Array [
+          "gatsby",
+          "application",
+          "react",
+        ]
+      }
+      lang="en"
+      meta={Array []}
+      title="Products"
+    />
+    <h1>
+      Products
+    </h1>
+    <ProductList />
+  </Layout>
+</CartStoreProvider>
 `;

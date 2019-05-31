@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CartList /> renders items from localstorage in cart 1`] = `
+exports[`<CartList /> matches snapshot 1`] = `
 <div
   className="cart-list"
 >
@@ -9,11 +9,15 @@ exports[`<CartList /> renders items from localstorage in cart 1`] = `
       key="fake-sku"
     >
       <CartItem
-        image="fake-image-url"
-        price={999.99}
-        qty={1}
-        sku="fake-sku"
-        title="fake-title"
+        item={
+          Object {
+            "image": "fake-image-url",
+            "price": 999.99,
+            "qty": 1,
+            "sku": "fake-sku",
+            "title": "fake-title",
+          }
+        }
       />
     </li>
   </ul>

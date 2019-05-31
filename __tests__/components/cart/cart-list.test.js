@@ -1,36 +1,49 @@
-import { mount, shallow } from "enzyme"
+import { shallow } from "enzyme"
 import React from "react"
 import CartItem from "../../../src/components/cart/cart-item"
 import CartList from "../../../src/components/cart/cart-list"
-import store from "../../../src/store/cart/store"
+import { clearCart } from "../../../src/store/cart/actions"
 
-const mockItems = [
-  {
-    sku: "fake-sku",
-    title: "fake-title",
-    price: 999.99,
-    image: "fake-image-url",
-    qty: 1,
-  },
-]
+const mockProduct = {
+  sku: "fake-sku",
+  title: "fake-title",
+  price: 999.99,
+  image: "fake-image-url",
+}
+
+const mockState = {
+  items: [
+    {
+      ...mockProduct,
+      qty: 1,
+    },
+  ],
+}
+
+// Mock useCart which is required in the component.
+// Don't test that side effects from useCart actually happen,
+// just test that dispatch is called where needed and that
+// the original state gets rendered.
+const mockDispatch = jest.fn()
+jest.mock("../../../src/store/cart/useCart.js", () => ({
+  useCart: () => [mockState, mockDispatch],
+}))
 
 describe("<CartList />", () => {
-  afterEach(() => {
-    store.clear()
-  })
-
-  it("renders items from localstorage in cart", () => {
-    store.set(mockItems)
+  it("matches snapshot", () => {
     const component = shallow(<CartList />)
-    expect(component.find(CartItem)).toHaveLength(1)
     expect(component).toMatchSnapshot()
   })
 
-  it("clear cart button clears items in localstorage", () => {
-    store.set(mockItems)
-    const component = mount(<CartList />)
+  it("renders items from Cart store", () => {
+    const component = shallow(<CartList />)
+    expect(component.find(CartItem)).toHaveLength(1)
+  })
+
+  it("clear cart button dispatches clear cart action", () => {
+    const component = shallow(<CartList />)
     const button = component.find(".cart-list-clear-button")
     button.simulate("click")
-    expect(store.get()).toEqual([])
+    expect(mockDispatch).toHaveBeenCalledWith(clearCart())
   })
 })

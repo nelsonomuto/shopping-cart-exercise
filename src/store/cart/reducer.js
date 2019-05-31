@@ -46,16 +46,13 @@ const clearCart = state => {
 }
 
 const updateCartItem = (state, foundItem, updates) => {
-  console.log("updateCartItem")
   const nextItem = {
     ...foundItem,
     ...updates,
   }
   const currentIndex = state.items.indexOf(foundItem)
-  console.log({ nextItem, currentIndex })
   const nextItems = [...state.items]
   nextItems[currentIndex] = nextItem
-  console.log("updating item...")
   return {
     ...state,
     items: nextItems,

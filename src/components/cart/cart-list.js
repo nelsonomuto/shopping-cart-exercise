@@ -5,7 +5,6 @@ import CartItem from "./cart-item"
 
 const CartList = () => {
   const [state, dispatch] = useCart()
-  console.log("state updated wtf")
   return (
     <div className="cart-list">
       <ul>
