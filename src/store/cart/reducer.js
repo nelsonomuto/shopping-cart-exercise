@@ -28,7 +28,7 @@ const addProductToCart = (state, { product }) => {
 
 const removeProductFromCart = (state, { product }) => {
   const foundItem = findItem(product, state.items)
-  if (!foundItem) return
+  if (!foundItem) return state
 
   // item exists; remove it from the saved items
   const nextItems = state.items.filter(_item => _item !== foundItem)

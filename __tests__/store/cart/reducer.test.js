@@ -61,6 +61,13 @@ const testCases = [
     expectedState: { items: [] },
   },
   {
+    description: "removeProductFromCart() does nothing if product not in cart",
+    actionCreator: removeProductFromCart,
+    args: { ...product, sku: 2 },
+    state: { items: [item] },
+    expectedState: { items: [item] },
+  },
+  {
     description: "clearCart() removes products from cart",
     actionCreator: clearCart,
     args: undefined,
@@ -108,6 +115,22 @@ const testCases = [
       ],
     },
     expectedState: { items: [] },
+  },
+  {
+    description: "decrementQuantity() does nothing if product not in cart",
+    actionCreator: decrementQuantity,
+    args: { ...product, sku: 2 },
+    state: { items: [item] },
+    expectedState: { items: [item] },
+  },
+  {
+    description: "does nothing on unknown action",
+    actionCreator: () => ({
+      type: "UNKNOWN_ACTION",
+    }),
+    args: undefined,
+    state: { items: [item] },
+    expectedState: { items: [item] },
   },
 ]
 

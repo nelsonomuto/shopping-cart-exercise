@@ -20,6 +20,7 @@
     "enzyme": "^3.9.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
+    "jooks": "0.0.15",
     "prettier": "^1.17.0",
     "react-test-renderer": "^16.8.6"
   },
@@ -33,6 +34,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage --coverageReporters=html",
+    "show-coverage": "npm run coverage && open ./coverage/index.html"
   }
 }
