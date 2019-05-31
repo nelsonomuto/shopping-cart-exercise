@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IndexPage renders correctly 1`] = `
+Array [
+  <header
+    style={
+      Object {
+        "background": "rebeccapurple",
+        "marginBottom": "1.45rem",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "margin": "0 auto",
+          "maxWidth": 960,
+          "padding": "0 1.0875rem",
+        }
+      }
+    >
+      <h1
+        style={
+          Object {
+            "margin": 0,
+            "position": "relative",
+          }
+        }
+      >
+        <a
+          href="/"
+          style={
+            Object {
+              "color": "white",
+              "textDecoration": "none",
+            }
+          }
+        >
+          RTG
+        </a>
+        <a
+          href="/cart"
+          style={
+            Object {
+              "color": "white",
+              "float": "right",
+              "fontSize": "1rem",
+              "fontWeight": "700",
+              "position": "absolute",
+              "right": "1.0875rem",
+              "textDecoration": "none",
+              "top": "1.5rem",
+            }
+          }
+        >
+          CART
+        </a>
+      </h1>
+    </div>
+  </header>,
+  <div
+    style={
+      Object {
+        "margin": "0 auto",
+        "maxWidth": 960,
+        "padding": "0px 1.0875rem 1.45rem",
+        "paddingTop": 0,
+      }
+    }
+  >
+    <main>
+      <h1>
+        Products
+      </h1>
+      <div
+        className="product-list grid-x grid-margin-y"
+      >
+        <div
+          className="product cell small-12 grid-x grid-margin-x"
+          id="fake-sku"
+        >
+          <div
+            className="product-image cell small-2"
+          >
+            <img
+              alt="fake-title"
+              src="fake-image-url"
+            />
+          </div>
+          <div
+            className="product-title cell small-4"
+          >
+            fake-title
+          </div>
+          <div
+            className="product-sku cell small-2"
+          >
+            fake-sku
+          </div>
+          <div
+            className="product-price cell small-2"
+          >
+            $
+            999.99
+          </div>
+          <div
+            className="product-add-to-cart cell small-2"
+          >
+            <button
+              id="add-to-cart"
+              onClick={[Function]}
+            >
+               
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer />
+  </div>,
+]
+`;

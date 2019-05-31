@@ -11,7 +11,6 @@ export const useCart = () => {
   }, [state])
 
   const nextState = { ...state, summary: getCartSummary(state.items) }
-  console.log(nextState)
 
   return [nextState, dispatch]
 }

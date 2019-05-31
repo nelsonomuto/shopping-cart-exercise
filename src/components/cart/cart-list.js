@@ -1,4 +1,5 @@
 import React from "react"
+import { useCart } from "../../store/cart/useCart"
 import CartItem from "./cart-item"
 
 const CartList = () => {
