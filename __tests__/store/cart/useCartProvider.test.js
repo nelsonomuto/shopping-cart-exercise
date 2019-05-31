@@ -5,22 +5,31 @@ import { addProductToCart } from "../../../src/store/cart/actions"
 import store from "../../../src/store/cart/persistentStore"
 import { CartStoreProvider, useCart } from "../../../src/store/cart/useCart"
 
-const UseCartTestComponent = ({ callback }) => {
-  const [state, dispatch] = useCart()
-  // pass the state and dispatch back up
-  // so we can use them directly in tests
-  callback(state, dispatch)
-  return null
-}
+const getReducerHook = (Provider, useHook) => {
+  let callCursor = -1
+  const mockFn = jest.fn().mockImplementation(() => {
+    callCursor++
+  })
 
-const Cart = ({ callback }) => (
-  <CartStoreProvider>
-    <UseCartTestComponent callback={callback} />
-  </CartStoreProvider>
-)
+  const ReducerHookComponent = ({ callback }) => {
+    const [state, dispatch] = useHook()
+    // pass the state and dispatch back up
+    // so we can use them directly in tests
+    callback(state, dispatch)
+    return null
+  }
 
-const getHook = callback => {
-  mount(<Cart callback={callback} />)
+  mount(
+    <Provider>
+      <ReducerHookComponent callback={mockFn} />
+    </Provider>
+  )
+
+  return {
+    callback: mockFn,
+    getState: () => mockFn.mock.calls[callCursor][0],
+    getDispatch: () => mockFn.mock.calls[callCursor][1],
+  }
 }
 
 const mockItem = {
@@ -32,27 +41,24 @@ const mockItem = {
 }
 
 describe("CartStoreProvider", () => {
-  const mockFn = jest.fn()
-
   afterEach(() => {
     store.clear()
   })
 
   it("gets items from store and puts into state", () => {
     store.set([mockItem])
-    getHook(mockFn)
-    let nextState = mockFn.mock.calls[0][0]
+    const hook = getReducerHook(CartStoreProvider, useCart)
+    const nextState = hook.getState()
     expect(nextState.items).toEqual([mockItem])
   })
 
   it("dispatching actions produces correct state", () => {
-    getHook(mockFn)
-    let dispatch = mockFn.mock.calls[0][1]
+    const hook = getReducerHook(CartStoreProvider, useCart)
+    const dispatch = hook.getDispatch()
     act(() => {
       dispatch(addProductToCart(mockItem))
     })
-    let nextState = mockFn.mock.calls[1][0]
-
+    const nextState = hook.getState()
     expect(nextState.items).toEqual([mockItem])
   })
 })
