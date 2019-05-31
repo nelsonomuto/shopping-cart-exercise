@@ -26,13 +26,13 @@ describe("<CartItem />", () => {
 
   it("renders items from store in cart", () => {
     store.set([mockItem])
-    const component = shallow(<CartItem item={mockItem} />)
+    const component = shallow(<CartItem {...mockItem} />)
     expect(component).toMatchSnapshot()
   })
 
   it("clicking decrement button updates item qty", () => {
     store.set([mockItem])
-    const component = mount(<CartItem item={mockItem} />)
+    const component = mount(<CartItem {...mockItem} />)
     const decrementButton = component.find(".cart-item-update-qty-button").at(0)
     // Trigger quantity update in store on item
     decrementButton.simulate("click")
@@ -43,7 +43,7 @@ describe("<CartItem />", () => {
 
   it("clicking increment button updates item qty", () => {
     store.set([mockItem])
-    const component = mount(<CartItem item={mockItem} />)
+    const component = mount(<CartItem {...mockItem} />)
     const incrementButton = component.find(".cart-item-update-qty-button").at(1)
     // Trigger quantity update in store on item
     incrementButton.simulate("click")
@@ -54,7 +54,7 @@ describe("<CartItem />", () => {
 
   it("clicking remove item removes item from store", () => {
     store.set([mockItem, mockItem2])
-    const component = mount(<CartItem item={mockItem} />)
+    const component = mount(<CartItem {...mockItem} />)
     const removeButton = component.find(".cart-item-remove-button")
     // Trigger item remove on store
     removeButton.simulate("click")

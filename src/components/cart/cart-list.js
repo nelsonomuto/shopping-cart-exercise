@@ -11,7 +11,7 @@ const CartList = () => {
       <ul>
         {state.items.map(item => (
           <li key={item.sku}>
-            <CartItem item={item} />
+            <CartItem {...item} />
           </li>
         ))}
       </ul>

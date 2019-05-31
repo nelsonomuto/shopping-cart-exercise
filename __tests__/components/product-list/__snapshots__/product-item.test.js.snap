@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductItem /> renders product item from product 1`] = `
+<div
+  className="product cell small-12 grid-x grid-margin-x"
+  id="fake-sku"
+>
+  <div
+    className="product-image cell small-2"
+  >
+    <img
+      alt="fake-title"
+      src="fake-image-url"
+    />
+  </div>
+  <div
+    className="product-title cell small-4"
+  >
+    fake-title
+  </div>
+  <div
+    className="product-sku cell small-2"
+  >
+    fake-sku
+  </div>
+  <div
+    className="product-price cell small-2"
+  >
+    $
+    999.99
+  </div>
+  <div
+    className="product-add-to-cart cell small-2"
+  >
+    <button
+      id="add-to-cart"
+      onClick={[Function]}
+    >
+       
+      Add to Cart
+    </button>
+  </div>
+</div>
+`;

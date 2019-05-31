@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductList /> renders product list 1`] = `
+<div
+  className="product-list grid-x grid-margin-y"
+>
+  <ProductItem
+    image="fake-image-url"
+    key="fake-sku"
+    price={999.99}
+    sku="fake-sku"
+    title="fake-title"
+  />
+</div>
+`;
