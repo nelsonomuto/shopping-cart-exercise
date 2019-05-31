@@ -46,13 +46,16 @@ const clearCart = state => {
 }
 
 const updateCartItem = (state, foundItem, updates) => {
+  console.log("updateCartItem")
   const nextItem = {
     ...foundItem,
     ...updates,
   }
   const currentIndex = state.items.indexOf(foundItem)
+  console.log({ nextItem, currentIndex })
   const nextItems = [...state.items]
   nextItems[currentIndex] = nextItem
+  console.log("updating item...")
   return {
     ...state,
     items: nextItems,
@@ -61,6 +64,7 @@ const updateCartItem = (state, foundItem, updates) => {
 
 const incrementQuantity = (state, { product }) => {
   const foundItem = findItem(product, state.items)
+  if (!foundItem) return state
   return updateCartItem(state, foundItem, { qty: foundItem.qty + 1 })
 }
 

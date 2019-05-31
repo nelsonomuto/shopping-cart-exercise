@@ -1,7 +1,9 @@
 export const LOCALSTORAGE_CART_KEY = "rtg-cart"
 
-const setCartItemsLocalStorage = cartItems =>
+const setCartItemsLocalStorage = cartItems => {
+  console.log("setCartItemsLocalStorage")
   localStorage.setItem(LOCALSTORAGE_CART_KEY, JSON.stringify(cartItems))
+}
 
 const getCartItemsLocalStorage = () => {
   if (!localStorage.getItem(LOCALSTORAGE_CART_KEY)) {

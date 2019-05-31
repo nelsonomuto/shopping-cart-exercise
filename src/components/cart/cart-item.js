@@ -6,7 +6,7 @@ import {
 } from "../../store/cart/actions"
 import { useCart } from "../../store/cart/useCart"
 
-const CartItem = item => {
+const CartItem = ({ item }) => {
   const [, dispatch] = useCart()
   const onRemove = () => dispatch(removeProductFromCart(item))
   const onIncrement = () => dispatch(incrementQuantity(item))

@@ -5,13 +5,13 @@ import CartItem from "./cart-item"
 
 const CartList = () => {
   const [state, dispatch] = useCart()
-
+  console.log("state updated wtf")
   return (
     <div className="cart-list">
       <ul>
         {state.items.map(item => (
           <li key={item.sku}>
-            <CartItem {...item} />
+            <CartItem item={item} />
           </li>
         ))}
       </ul>
