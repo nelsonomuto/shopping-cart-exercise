@@ -15,4 +15,8 @@ module.exports = {
   setupFiles: [`<rootDir>/loadershim.js`, "<rootDir>/enzyme.config.js"],
   snapshotSerializers: ["enzyme-to-json/serializer"],
   clearMocks: true,
+  testMatch: [
+    "**/__tests__/**/*.test.[jt]s?(x)",
+    "**/?(*.)+(spec|test).test.[jt]s?(x)",
+  ],
 }

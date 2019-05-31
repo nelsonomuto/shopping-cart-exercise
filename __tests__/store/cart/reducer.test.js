@@ -89,6 +89,13 @@ const testCases = [
     },
   },
   {
+    description: "incrementQuantity() does nothing if product not in cart",
+    actionCreator: incrementQuantity,
+    args: { ...product, sku: 2 },
+    state: { items: [item] },
+    expectedState: { items: [item] },
+  },
+  {
     description: "decrementQuantity() decrements product qty",
     actionCreator: decrementQuantity,
     args: product,
