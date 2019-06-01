@@ -151,7 +151,7 @@ describe("cart reducer", () => {
   } of testCases) {
     it(description, () => {
       const result = reducer(state, actionCreator(args))
-      expect(result).toEqual(expectedState)
+      expect(result).toMatchObject(expectedState)
     })
   }
 })

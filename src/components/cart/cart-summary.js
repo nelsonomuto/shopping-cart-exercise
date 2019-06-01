@@ -3,7 +3,9 @@ import { dollars } from "../../services/formatString"
 import { useCart } from "../../store/cart/useCart"
 
 const CartSummary = () => {
-  const [{ summary }] = useCart()
+  const [{ items, summary }] = useCart()
+
+  if (items.length === 0) return null
 
   return (
     <div className="cart-summary">

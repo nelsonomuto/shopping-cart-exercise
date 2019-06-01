@@ -1,13 +1,10 @@
-import init from "jooks"
 import { addProductToCart } from "../../../src/store/cart/actions"
-import store from "../../../src/store/cart/persistentStore"
-import { getCartSummary } from "../../../src/store/cart/reducer"
-import { CartStoreContext, useCart } from "../../../src/store/cart/useCart"
-
-jest.mock("../../../src/store/cart/persistentStore", () => ({
-  get: jest.fn().mockImplementation(() => []),
-  set: jest.fn(),
-}))
+import {
+  CartStoreProvider,
+  store,
+  useCart,
+} from "../../../src/store/cart/useCart"
+import { getReducerHook } from "../../testUtils/hookUtils"
 
 const mockItem = {
   sku: "fake-sku",
@@ -17,32 +14,24 @@ const mockItem = {
   qty: 1,
 }
 
-const mockState = {
-  items: [mockItem],
-}
-
-describe("useCart hook", () => {
-  const mockHook = init(() => useCart())
-  const mockDispatch = jest.fn()
-
-  beforeEach(() => {
-    mockHook.setContext(CartStoreContext, {
-      state: mockState,
-      dispatch: mockDispatch,
-    })
+describe("CartStoreProvider", () => {
+  afterEach(() => {
+    store.clear()
   })
 
-  it("updates store after state changes", async () => {
-    await mockHook.mount()
-    const [, dispatch] = mockHook.run()
+  it("gets items from store and puts into state", () => {
+    store.set({ items: [mockItem] })
+    const hook = getReducerHook(CartStoreProvider, useCart)
+    const nextState = hook.getState()
+    expect(nextState.items).toEqual([mockItem])
+  })
+
+  it("dispatching actions produces correct state", () => {
+    const hook = getReducerHook(CartStoreProvider, useCart)
+    expect(hook.getState().items).toEqual([])
+    const dispatch = hook.getDispatch()
     dispatch(addProductToCart(mockItem))
-    await mockHook.wait()
-    expect(store.set).toHaveBeenLastCalledWith(mockState.items)
-  })
-
-  it("state includes computed summary", async () => {
-    await mockHook.mount()
-    const [state] = mockHook.run()
-    expect(state.summary).toEqual(getCartSummary(mockState.items))
+    const nextState = hook.getState()
+    expect(nextState.items).toEqual([mockItem])
   })
 })

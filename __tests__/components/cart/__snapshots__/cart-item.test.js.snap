@@ -1,12 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CartItem /> matches snapshot 1`] = `
-<div>
-  <h4
+<div
+  className="cart-item"
+>
+  <span
     className="cart-item-title"
   >
     fake-title
-  </h4>
+  </span>
+  <span
+    className="cart-item-price"
+  >
+    $ 999.99
+  </span>
   <div
     className="cart-item-controls"
   >

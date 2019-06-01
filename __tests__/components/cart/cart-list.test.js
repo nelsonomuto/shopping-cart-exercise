@@ -3,6 +3,7 @@ import React from "react"
 import CartItem from "../../../src/components/cart/cart-item"
 import CartList from "../../../src/components/cart/cart-list"
 import { clearCart } from "../../../src/store/cart/actions"
+import { useCart } from "../../../src/store/cart/useCart"
 
 const mockProduct = {
   sku: "fake-sku",
@@ -26,10 +27,14 @@ const mockState = {
 // the original state gets rendered.
 const mockDispatch = jest.fn()
 jest.mock("../../../src/store/cart/useCart.js", () => ({
-  useCart: () => [mockState, mockDispatch],
+  useCart: jest.fn(),
 }))
 
 describe("<CartList />", () => {
+  beforeEach(() => {
+    useCart.mockImplementationOnce(() => [mockState, mockDispatch])
+  })
+
   it("matches snapshot", () => {
     const component = shallow(<CartList />)
     expect(component).toMatchSnapshot()
@@ -45,5 +50,10 @@ describe("<CartList />", () => {
     const button = component.find(".cart-list-clear-button")
     button.simulate("click")
     expect(mockDispatch).toHaveBeenCalledWith(clearCart())
+  })
+
+  it("shows empty message when list is empty", () => {
+    const component = shallow(<CartList />)
+    expect(component).toMatchSnapshot()
   })
 })

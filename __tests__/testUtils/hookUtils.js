@@ -10,7 +10,7 @@ export const getReducerHook = (Provider, useHook) => {
 
   const ReducerHookComponent = ({ callback }) => {
     const [state, dispatch] = useHook()
-    callback(state, dispatch)
+    callback(state, jest.fn().mockImplementation(action => dispatch(action)))
     return null
   }
 

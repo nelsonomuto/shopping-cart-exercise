@@ -1,4 +1,5 @@
 import React from "react"
+import { dollars } from "../../services/formatString"
 import {
   decrementQuantity,
   incrementQuantity,
@@ -13,8 +14,9 @@ const CartItem = ({ item }) => {
   const onDecrement = () => dispatch(decrementQuantity(item))
 
   return (
-    <div>
-      <h4 className="cart-item-title">{item.title}</h4>
+    <div className="cart-item">
+      <span className="cart-item-title">{item.title}</span>
+      <span className="cart-item-price">{dollars(item.price)}</span>
       <div className="cart-item-controls">
         <button className="cart-item-update-qty-button" onClick={onDecrement}>
           -

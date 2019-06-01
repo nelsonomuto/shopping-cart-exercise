@@ -12,7 +12,6 @@ const {
   useStore: useCart,
 } = createContextStore("Cart", reducer, defaultState, {
   // only save items to localstorage, we dont need to save the whole cart state
-  // serializeStore: ({ items }) => ({ items }),
   serializeStore: state => {
     return { items: state.items }
   },

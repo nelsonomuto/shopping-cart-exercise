@@ -1,4 +1,4 @@
-export default function getStore(key, defaultState) {
+export default function createPersistentStore(key, defaultState) {
   const setLocalStorage = content => {
     localStorage.setItem(key, JSON.stringify(content))
   }

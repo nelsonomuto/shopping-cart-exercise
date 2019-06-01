@@ -1,4 +1,11 @@
+.cart-item {
+  display: flex;
+  flex-flow: row wrap;
+}
 .cart-item-title {
+  flex: 1 0 100%;
+}
+.cart-item-price {
   display: flex;
 }
 .cart-item-controls {

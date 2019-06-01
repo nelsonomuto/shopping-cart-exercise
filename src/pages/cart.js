@@ -6,17 +6,15 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { CartStoreProvider } from "../store/cart/useCart"
 
-const Cart = () => {
-  return (
-    <CartStoreProvider>
-      <Layout>
-        <SEO title="Cart" />
-        <h1>Cart</h1>
-        <CartList />
-        <CartSummary />
-      </Layout>
-    </CartStoreProvider>
-  )
-}
+const Cart = () => (
+  <CartStoreProvider>
+    <Layout>
+      <SEO title="Cart" />
+      <h1>Cart</h1>
+      <CartList />
+      <CartSummary />
+    </Layout>
+  </CartStoreProvider>
+)
 
 export default Cart

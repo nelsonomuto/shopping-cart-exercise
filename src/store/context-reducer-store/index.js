@@ -32,6 +32,8 @@ export default function createContextStore(
     )
   }
 
+  StoreProvider.displayName = `${name}StoreProvider`
+
   // Use this to access state and dispatch action, like useReducer
   // except it is available locally anywhere under the StoreProvider wrapper
   const useStore = () => {
