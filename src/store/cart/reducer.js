@@ -74,19 +74,26 @@ const decrementQuantity = (state, { product }) => {
 }
 
 const reducer = (state, action) => {
-  switch (action.type) {
-    case actions.INCREMENT_QUANTITY:
-      return incrementQuantity(state, action)
-    case actions.DECREMENT_QUANTITY:
-      return decrementQuantity(state, action)
-    case actions.ADD_PRODUCT_TO_CART:
-      return addProductToCart(state, action)
-    case actions.REMOVE_PRODUCT_FROM_CART:
-      return removeProductFromCart(state, action)
-    case actions.CLEAR_CART:
-      return clearCart(state, action)
-    default:
-      return state
+  const _state = (() => {
+    switch (action.type) {
+      case actions.INCREMENT_QUANTITY:
+        return incrementQuantity(state, action)
+      case actions.DECREMENT_QUANTITY:
+        return decrementQuantity(state, action)
+      case actions.ADD_PRODUCT_TO_CART:
+        return addProductToCart(state, action)
+      case actions.REMOVE_PRODUCT_FROM_CART:
+        return removeProductFromCart(state, action)
+      case actions.CLEAR_CART:
+        return clearCart(state, action)
+      default:
+        return state
+    }
+  })()
+
+  return {
+    ..._state,
+    summary: getCartSummary(_state.items),
   }
 }
 
