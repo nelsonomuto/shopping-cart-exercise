@@ -1,6 +1,9 @@
 import { addProductToCart } from "../../../src/store/cart/actions"
-import store from "../../../src/store/cart/persistentStore"
-import { CartStoreProvider, useCart } from "../../../src/store/cart/useCart"
+import {
+  CartStoreProvider,
+  store,
+  useCart,
+} from "../../../src/store/cart/useCart"
 import { getReducerHook } from "../../testUtils/hookUtils"
 
 const mockItem = {
@@ -17,7 +20,7 @@ describe("CartStoreProvider", () => {
   })
 
   it("gets items from store and puts into state", () => {
-    store.set([mockItem])
+    store.set({ items: [mockItem] })
     const hook = getReducerHook(CartStoreProvider, useCart)
     const nextState = hook.getState()
     expect(nextState.items).toEqual([mockItem])
@@ -25,6 +28,7 @@ describe("CartStoreProvider", () => {
 
   it("dispatching actions produces correct state", () => {
     const hook = getReducerHook(CartStoreProvider, useCart)
+    expect(hook.getState().items).toEqual([])
     const dispatch = hook.getDispatch()
     dispatch(addProductToCart(mockItem))
     const nextState = hook.getState()
