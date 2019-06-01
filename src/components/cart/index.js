@@ -41,17 +41,17 @@ const Cart = () => {
           (isCartOpen ? " cart-animate-open" : " cart-animate-closed")
         }
       >
-        <div className="cart-container" ref={containerRef}>
+        <div className="cart-sidebar-container" ref={containerRef}>
           <button className="cart-portal-close-button" onClick={toggleCart}>
             Close
           </button>
-          <div className="cart-items-container">
+          <div className="cart-sidebar-items-container">
             <h1>Cart</h1>
             <CartList onShop={toggleCart} />
           </div>
-          <div className="cart-summary-container">
-            <div className="cart-summary">
-              <div>Subtotal: {dollars(summary.subtotal)}</div>
+          <div className="cart-sidebar-summary-container">
+            <div className="cart-subtotal">
+              Subtotal: {dollars(summary.subtotal)}
             </div>
             <Link to="/checkout" className="cart-checkout-button">
               Checkout

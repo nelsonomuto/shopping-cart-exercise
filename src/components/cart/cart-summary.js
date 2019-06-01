@@ -9,7 +9,7 @@ const CartSummary = () => {
 
   return (
     <div className="cart-summary">
-      <div>Subtotal: {dollars(summary.subtotal)}</div>
+      <div className="cart-subtotal">Subtotal: {dollars(summary.subtotal)}</div>
       <div>Tax: {dollars(summary.totalTax)}</div>
       <div>
         Shipping:{" "}
