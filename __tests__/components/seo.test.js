@@ -7,4 +7,8 @@ describe("<SEO />", () => {
     const component = shallow(<SEO title="TEST" />)
     expect(component).toMatchSnapshot()
   })
+  it("matches snapshot (with keywords)", () => {
+    const component = shallow(<SEO title="TEST" keywords={["test"]} />)
+    expect(component).toMatchSnapshot()
+  })
 })

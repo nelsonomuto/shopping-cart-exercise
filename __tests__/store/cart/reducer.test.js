@@ -5,7 +5,7 @@ import {
   incrementQuantity,
   removeProductFromCart,
 } from "../../../src/store/cart/actions"
-import reducer from "../../../src/store/cart/reducer"
+import reducer, { getCartSummary } from "../../../src/store/cart/reducer"
 
 const product = {
   sku: "fake-sku",
@@ -154,4 +154,22 @@ describe("cart reducer", () => {
       expect(result).toMatchObject(expectedState)
     })
   }
+})
+
+describe("getCartSummary()", () => {
+  it("gets correct summary from items", () => {
+    const items = [{ price: 1, qty: 1 }]
+    const result = getCartSummary(items)
+    expect(result).toMatchObject({
+      subtotal: 1,
+      totalTax: 0.1,
+    })
+    expect(result.totalCost).toBeCloseTo(46.12)
+    expect(result.shippingCost).toBeCloseTo(45.02)
+  })
+  it("shipping cost 0 when calculation is negative", () => {
+    const items = [{ price: 0, qty: 100 }] // will make shippingCost negative
+    const result = getCartSummary(items)
+    expect(result.shippingCost).toEqual(0)
+  })
 })

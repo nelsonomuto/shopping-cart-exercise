@@ -1,5 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<SEO /> matches snapshot (with keywords) 1`] = `
+<HelmetWrapper
+  defer={true}
+  encodeSpecialCharacters={true}
+  htmlAttributes={
+    Object {
+      "lang": "en",
+    }
+  }
+  meta={
+    Array [
+      Object {
+        "content": "test",
+        "name": "keywords",
+      },
+    ]
+  }
+  title="TEST"
+/>
+`;
+
 exports[`<SEO /> matches snapshot 1`] = `
 <HelmetWrapper
   defer={true}
