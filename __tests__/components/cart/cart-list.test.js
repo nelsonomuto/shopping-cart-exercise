@@ -51,8 +51,11 @@ describe("<CartList />", () => {
     button.simulate("click")
     expect(mockDispatch).toHaveBeenCalledWith(clearCart())
   })
+})
 
-  it("shows empty message when list is empty", () => {
+describe("<CartList /> (with no items)", () => {
+  it("matches snapshot (empty state)", () => {
+    useCart.mockImplementationOnce(() => [{ items: [] }, mockDispatch])
     const component = shallow(<CartList />)
     expect(component).toMatchSnapshot()
   })

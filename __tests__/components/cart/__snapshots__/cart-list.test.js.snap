@@ -1,36 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CartList /> matches snapshot 1`] = `
+exports[`<CartList /> (with no items) matches snapshot (empty state) 1`] = `
 <div
-  className="cart-list"
+  className="cart-list cart-list-empty"
 >
-  <ul>
-    <li
-      key="fake-sku"
+  <h3>
+    Your cart is empty. 
+    <mockConstructor
+      to="/"
     >
-      <CartItem
-        item={
-          Object {
-            "image": "fake-image-url",
-            "price": 999.99,
-            "qty": 1,
-            "sku": "fake-sku",
-            "title": "fake-title",
-          }
-        }
-      />
-    </li>
-  </ul>
-  <button
-    className="cart-list-clear-button"
-    onClick={[Function]}
-  >
-    Clear Cart
-  </button>
+      Shop now
+    </mockConstructor>
+  </h3>
 </div>
 `;
 
-exports[`<CartList /> shows empty message when list is empty 1`] = `
+exports[`<CartList /> matches snapshot 1`] = `
 <div
   className="cart-list"
 >

@@ -6,6 +6,7 @@ import {
   incrementQuantity,
   removeProductFromCart,
 } from "../../../src/store/cart/actions"
+import { useCart } from "../../../src/store/cart/useCart"
 
 const mockItem = {
   sku: "fake-sku",
@@ -24,10 +25,14 @@ const mockState = {
 // the original state gets rendered.
 const mockDispatch = jest.fn()
 jest.mock("../../../src/store/cart/useCart.js", () => ({
-  useCart: () => [mockState, mockDispatch],
+  useCart: jest.fn(),
 }))
 
 describe("<CartItem />", () => {
+  beforeEach(() => {
+    useCart.mockImplementationOnce(() => [mockState, mockDispatch])
+  })
+
   it("matches snapshot", () => {
     const component = shallow(<CartItem item={mockItem} />)
     expect(component).toMatchSnapshot()
