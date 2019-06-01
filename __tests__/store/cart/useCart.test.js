@@ -1,10 +1,8 @@
-import { addProductToCart } from "../../../src/store/cart/actions"
+import { getCartSummary } from "../../../src/store/cart/reducer"
 import {
-  CartStoreProvider,
-  store,
-  useCart,
+  deserializeStore,
+  serializeStore,
 } from "../../../src/store/cart/useCart"
-import { getReducerHook } from "../../testUtils/hookUtils"
 
 const mockItem = {
   sku: "fake-sku",
@@ -13,25 +11,22 @@ const mockItem = {
   image: "fake-image-url",
   qty: 1,
 }
+const reducerState = {
+  items: [mockItem],
+  summary: getCartSummary([mockItem]),
+}
+const serializedState = {
+  items: [mockItem],
+}
 
 describe("CartStoreProvider", () => {
-  afterEach(() => {
-    store.clear()
+  it("serializeStore only saves items", () => {
+    const result = serializeStore(reducerState)
+    expect(result).toEqual(serializedState)
   })
 
-  it("gets items from store and puts into state", () => {
-    store.set({ items: [mockItem] })
-    const hook = getReducerHook(CartStoreProvider, useCart)
-    const nextState = hook.getState()
-    expect(nextState.items).toEqual([mockItem])
-  })
-
-  it("dispatching actions produces correct state", () => {
-    const hook = getReducerHook(CartStoreProvider, useCart)
-    expect(hook.getState().items).toEqual([])
-    const dispatch = hook.getDispatch()
-    dispatch(addProductToCart(mockItem))
-    const nextState = hook.getState()
-    expect(nextState.items).toEqual([mockItem])
+  it("deserializeStore adds cart sumamry back", () => {
+    const result = deserializeStore(serializedState)
+    expect(result).toEqual(reducerState)
   })
 })

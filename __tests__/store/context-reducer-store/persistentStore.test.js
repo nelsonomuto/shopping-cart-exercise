@@ -16,31 +16,31 @@ describe("persistent store", () => {
   })
 
   it("get() returns existing store", () => {
-    const cartItems = [{ sku: 1 }]
+    const mockState = { id: 1 }
     window.localStorage.setItem(
       LOCALSTORAGE_STATE_KEY,
-      JSON.stringify(cartItems)
+      JSON.stringify(mockState)
     )
     const store = createStore(LOCALSTORAGE_STATE_KEY, { message: "hi" })
     const result = store.get()
-    expect(result).toEqual(cartItems)
+    expect(result).toEqual(mockState)
   })
 
   it("set() persists store to localstorage", () => {
     expect(window.localStorage.getItem(LOCALSTORAGE_STATE_KEY)).toBeNull()
-    const cartItems = [{ sku: 1 }]
+    const mockState = { id: 1 }
     const store = createStore(LOCALSTORAGE_STATE_KEY)
-    store.set(cartItems)
+    store.set(mockState)
     expect(window.localStorage.getItem(LOCALSTORAGE_STATE_KEY)).toBeDefined()
     const result = store.get()
-    expect(result).toEqual(cartItems)
+    expect(result).toEqual(mockState)
   })
 
   it("clear() removes the store from localstorage", () => {
     window.localStorage.setItem("other-entry", "1")
-    const cartItems = [{ sku: 1 }]
+    const mockState = { id: 1 }
     const store = createStore(LOCALSTORAGE_STATE_KEY)
-    store.set(cartItems)
+    store.set(mockState)
     expect(window.localStorage.getItem(LOCALSTORAGE_STATE_KEY)).toBeDefined()
     store.clear()
     expect(window.localStorage.getItem(LOCALSTORAGE_STATE_KEY)).toBeNull()
