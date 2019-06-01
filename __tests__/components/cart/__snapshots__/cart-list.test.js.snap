@@ -5,7 +5,8 @@ exports[`<CartList /> (with no items) matches snapshot (empty state) 1`] = `
   className="cart-list cart-list-empty"
 >
   <h3>
-    Your cart is empty. 
+    Your cart is empty.
+     
     <mockConstructor
       to="/"
     >

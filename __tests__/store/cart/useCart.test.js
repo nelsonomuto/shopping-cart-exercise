@@ -1,6 +1,6 @@
-import { getCartSummary } from "../../../src/store/cart/reducer"
 import {
   deserializeStore,
+  getDefaultState,
   serializeStore,
 } from "../../../src/store/cart/useCart"
 
@@ -11,10 +11,10 @@ const mockItem = {
   image: "fake-image-url",
   qty: 1,
 }
-const reducerState = {
+const reducerState = getDefaultState({
   items: [mockItem],
-  summary: getCartSummary([mockItem]),
-}
+})
+
 const serializedState = {
   items: [mockItem],
 }

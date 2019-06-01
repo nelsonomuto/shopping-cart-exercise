@@ -1,7 +1,7 @@
 import createContextStore from "../context-reducer-store"
 import reducer, { getCartSummary } from "./reducer"
 
-const getDefaultState = (override = {}) => ({
+export const getDefaultState = (override = {}) => ({
   ...override,
   summary: getCartSummary(override.items || []),
   isCartOpen: false,

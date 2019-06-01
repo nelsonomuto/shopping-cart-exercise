@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CartPage renders cart page component 1`] = `
+exports[`CheckoutPage renders checkout page component 1`] = `
 <CartStoreProvider>
   <Layout>
     <SEO
@@ -8,7 +8,7 @@ exports[`CartPage renders cart page component 1`] = `
       keywords={Array []}
       lang="en"
       meta={Array []}
-      title="Cart"
+      title="Checkout"
     />
     <h1>
       Cart

@@ -37,25 +37,14 @@ exports[`<Header /> matches snapshot 1`] = `
       >
         TEST
       </mockConstructor>
-      <mockConstructor
-        style={
-          Object {
-            "color": "white",
-            "float": "right",
-            "fontSize": "1rem",
-            "fontWeight": "700",
-            "position": "absolute",
-            "right": "1.0875rem",
-            "textDecoration": "none",
-            "top": "1.5rem",
-          }
-        }
-        to="/cart"
+      <button
+        className="cart-button"
+        onClick={[Function]}
       >
         CART (
         4
         )
-      </mockConstructor>
+      </button>
     </h1>
   </div>
 </header>
