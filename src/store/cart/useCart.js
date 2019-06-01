@@ -1,19 +1,20 @@
 import createContextStore from "../context-reducer-store"
 import reducer, { getCartSummary } from "./reducer"
 
-const defaultState = {
-  items: [],
-  summary: getCartSummary([]),
-}
+const getDefaultState = (override = {}) => ({
+  ...override,
+  summary: getCartSummary(override.items || []),
+  isCartOpen: false,
+})
 
 export const serializeStore = state => {
   return { items: state.items }
 }
 
-export const deserializeStore = state => {
+export const deserializeStore = fromStore => {
   return {
-    items: state.items,
-    summary: getCartSummary(state.items),
+    items: fromStore.items,
+    ...getDefaultState(fromStore),
   }
 }
 
@@ -21,7 +22,7 @@ const {
   store,
   StoreProvider: CartStoreProvider,
   useStore: useCart,
-} = createContextStore("Cart", reducer, defaultState, {
+} = createContextStore("Cart", reducer, getDefaultState(), {
   // only save `items` to localstorage, we dont need to save the whole cart state
   serializeStore,
   deserializeStore,

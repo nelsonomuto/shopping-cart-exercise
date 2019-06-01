@@ -73,6 +73,13 @@ const decrementQuantity = (state, { product }) => {
   return updateCartItem(state, foundItem, { qty: nextQty })
 }
 
+const toggleCartOpen = state => {
+  return {
+    ...state,
+    isCartOpen: !state.isCartOpen,
+  }
+}
+
 const reducer = (state, action) => {
   const _state = (() => {
     switch (action.type) {
@@ -85,7 +92,9 @@ const reducer = (state, action) => {
       case actions.REMOVE_PRODUCT_FROM_CART:
         return removeProductFromCart(state, action)
       case actions.CLEAR_CART:
-        return clearCart(state, action)
+        return clearCart(state)
+      case actions.TOGGLE_CART_OPEN:
+        return toggleCartOpen(state)
       default:
         return state
     }

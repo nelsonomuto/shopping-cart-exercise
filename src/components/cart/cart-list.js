@@ -4,14 +4,17 @@ import { clearCart } from "../../store/cart/actions"
 import { useCart } from "../../store/cart/useCart"
 import CartItem from "./cart-item"
 
-const CartList = () => {
+const CartList = ({ onShop }) => {
   const [{ items }, dispatch] = useCart()
 
   if (items.length === 0) {
     return (
       <div className="cart-list cart-list-empty">
         <h3>
-          Your cart is empty. <Link to="/">Shop now</Link>
+          Your cart is empty.{" "}
+          <Link to="/" onClick={onShop}>
+            Shop now
+          </Link>
         </h3>
       </div>
     )

@@ -1,10 +1,11 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import { toggleCartOpen } from "../store/cart/actions"
 import { useCart } from "../store/cart/useCart"
 
 const Header = ({ siteTitle }) => {
-  const [{ items }] = useCart()
+  const [{ items }, dispatch] = useCart()
 
   const itemCount = items.reduce((acc, item) => acc + item.qty, 0)
 
@@ -32,21 +33,14 @@ const Header = ({ siteTitle }) => {
           >
             {siteTitle}
           </Link>
-          <Link
-            to="/cart"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-              fontSize: `1rem`,
-              float: `right`,
-              position: `absolute`,
-              top: `1.5rem`,
-              right: `1.0875rem`,
-              fontWeight: `700`,
+          <button
+            onClick={() => {
+              dispatch(toggleCartOpen())
             }}
+            className="cart-button"
           >
             CART ({itemCount})
-          </Link>
+          </button>
         </h1>
       </div>
     </header>
