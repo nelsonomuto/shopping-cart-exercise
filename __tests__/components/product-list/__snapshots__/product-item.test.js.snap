@@ -26,8 +26,7 @@ exports[`<ProductItem /> renders product item from product 1`] = `
   <div
     className="product-price cell small-2"
   >
-    $
-    999.99
+    $ 999.99
   </div>
   <div
     className="product-add-to-cart cell small-2"

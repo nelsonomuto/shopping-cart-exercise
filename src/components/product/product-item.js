@@ -1,4 +1,5 @@
 import React from "react"
+import { dollars } from "../../services/formatString"
 import { addProductToCart } from "../../store/cart/actions"
 import { useCart } from "../../store/cart/useCart"
 
@@ -14,7 +15,7 @@ const ProductItem = product => {
       </div>
       <div className="product-title cell small-4">{product.title}</div>
       <div className="product-sku cell small-2">{product.sku}</div>
-      <div className="product-price cell small-2">${product.price}</div>
+      <div className="product-price cell small-2">{dollars(product.price)}</div>
       <div className="product-add-to-cart cell small-2">
         <button
           id="add-to-cart"

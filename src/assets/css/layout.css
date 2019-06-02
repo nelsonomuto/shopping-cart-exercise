@@ -620,3 +620,8 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+main h1 {
+  border-bottom: 2px solid #eee;
+  margin-bottom: 30px;
+}

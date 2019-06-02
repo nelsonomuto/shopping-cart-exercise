@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import "../assets/css/header.css"
 import { toggleCartOpen } from "../store/cart/actions"
 import { useCart } from "../store/cart/useCart"
 
@@ -10,19 +11,8 @@ const Header = ({ siteTitle }) => {
   const itemCount = items.reduce((acc, item) => acc + item.qty, 0)
 
   return (
-    <header
-      style={{
-        background: `rebeccapurple`,
-        marginBottom: `1.45rem`,
-      }}
-    >
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem`,
-        }}
-      >
+    <header className="app-header">
+      <div className="app-header-items">
         <h1 style={{ margin: 0, position: `relative` }}>
           <Link
             to="/"
@@ -33,15 +23,16 @@ const Header = ({ siteTitle }) => {
           >
             {siteTitle}
           </Link>
-          <button
-            onClick={() => {
-              dispatch(toggleCartOpen())
-            }}
-            className="cart-button"
-          >
-            CART ({itemCount})
-          </button>
         </h1>
+        <button
+          onClick={() => {
+            dispatch(toggleCartOpen())
+          }}
+          className="cart-button"
+        >
+          CART
+          <span className="cart-button-item-count">{itemCount}</span>
+        </button>
       </div>
     </header>
   )

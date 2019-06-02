@@ -2,21 +2,10 @@
 
 exports[`<Header /> matches snapshot 1`] = `
 <header
-  style={
-    Object {
-      "background": "rebeccapurple",
-      "marginBottom": "1.45rem",
-    }
-  }
+  className="app-header"
 >
   <div
-    style={
-      Object {
-        "margin": "0 auto",
-        "maxWidth": 960,
-        "padding": "0 1.0875rem",
-      }
-    }
+    className="app-header-items"
   >
     <h1
       style={
@@ -37,15 +26,18 @@ exports[`<Header /> matches snapshot 1`] = `
       >
         TEST
       </mockConstructor>
-      <button
-        className="cart-button"
-        onClick={[Function]}
-      >
-        CART (
-        4
-        )
-      </button>
     </h1>
+    <button
+      className="cart-button"
+      onClick={[Function]}
+    >
+      CART
+      <span
+        className="cart-button-item-count"
+      >
+        4
+      </span>
+    </button>
   </div>
 </header>
 `;

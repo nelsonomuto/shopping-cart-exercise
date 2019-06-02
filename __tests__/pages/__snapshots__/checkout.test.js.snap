@@ -11,7 +11,7 @@ exports[`CheckoutPage renders checkout page component 1`] = `
       title="Checkout"
     />
     <h1>
-      Cart
+      Checkout
     </h1>
     <CartList />
     <CartSummary />

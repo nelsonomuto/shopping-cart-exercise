@@ -10,7 +10,7 @@ const CheckoutPage = () => (
   <CartStoreProvider>
     <Layout>
       <SEO title="Checkout" />
-      <h1>Cart</h1>
+      <h1>Checkout</h1>
       <CartList />
       <CartSummary />
     </Layout>

@@ -1,0 +1,36 @@
+.app-header {
+  background: rebeccapurple;
+  margin-bottom: 1.45rem;
+}
+
+.app-header-items {
+  display: flex;
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 1.0875rem;
+  justify-content: flex-start;
+}
+
+.cart-button {
+  display: flex;
+  margin-left: auto;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid rgb(139, 117, 161);
+  color: #fff;
+  height: 43px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.cart-button:hover {
+  background: #fff;
+  color: rebeccapurple;
+}
+
+.cart-button-item-count {
+  color: rgb(139, 117, 161);
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-left: 6px;
+}
