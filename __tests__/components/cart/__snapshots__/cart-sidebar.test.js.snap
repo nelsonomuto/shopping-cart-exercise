@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartSidebar /> (with no items) matches snapshot (empty state) 1`] = `
+<CartPortal>
+  <div
+    className="cart-portal-container cart-animate-open"
+  >
+    <div
+      className="cart-sidebar-container"
+    >
+      <button
+        className="cart-portal-close-button"
+        onClick={[Function]}
+      />
+      <div
+        className="cart-sidebar-items-container"
+      >
+        <h1>
+          Cart
+        </h1>
+        <CartList
+          onShop={[Function]}
+        />
+      </div>
+      <div
+        className="cart-sidebar-summary-container"
+      >
+        <div
+          className="cart-subtotal"
+        >
+          <div
+            className="cart-subtotal-label"
+          >
+            Subtotal:
+          </div>
+          <div
+            className="cart-subtotal-amt"
+          >
+            $ 0.00
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</CartPortal>
+`;
+
+exports[`<CartSidebar /> matches snapshot 1`] = `
+<CartPortal>
+  <div
+    className="cart-portal-container cart-animate-open"
+  >
+    <div
+      className="cart-sidebar-container"
+    >
+      <button
+        className="cart-portal-close-button"
+        onClick={[Function]}
+      />
+      <div
+        className="cart-sidebar-items-container"
+      >
+        <h1>
+          Cart
+        </h1>
+        <CartList
+          onShop={[Function]}
+        />
+      </div>
+      <div
+        className="cart-sidebar-summary-container"
+      >
+        <div
+          className="cart-subtotal"
+        >
+          <div
+            className="cart-subtotal-label"
+          >
+            Subtotal:
+          </div>
+          <div
+            className="cart-subtotal-amt"
+          >
+            $ 999.99
+          </div>
+        </div>
+        <mockConstructor
+          className="cart-checkout-button"
+          to="/checkout"
+        >
+          Checkout
+        </mockConstructor>
+      </div>
+    </div>
+  </div>
+</CartPortal>
+`;

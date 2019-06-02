@@ -35,7 +35,6 @@ const CartSidebar = () => {
   return (
     <CartPortal>
       <div
-        onClick={onClickOutside}
         className={
           "cart-portal-container" +
           (isCartOpen ? " cart-animate-open" : " cart-animate-closed")
