@@ -2,9 +2,10 @@ import createContextStore from "../context-reducer-store"
 import reducer, { getCartSummary } from "./reducer"
 
 export const getDefaultState = (override = {}) => ({
-  ...override,
+  items: [],
   summary: getCartSummary(override.items || []),
   isCartOpen: false,
+  ...override,
 })
 
 export const serializeStore = state => {

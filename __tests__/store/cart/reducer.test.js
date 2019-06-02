@@ -4,8 +4,10 @@ import {
   decrementQuantity,
   incrementQuantity,
   removeProductFromCart,
+  toggleCartOpen,
 } from "../../../src/store/cart/actions"
 import reducer, { getCartSummary } from "../../../src/store/cart/reducer"
+import { getDefaultState } from "../../../src/store/cart/useCart"
 
 const product = {
   sku: "fake-sku",
@@ -23,121 +25,124 @@ const testCases = [
   {
     description: "addProductToCart() adds product to cart",
     actionCreator: addProductToCart,
-    args: product,
-    state: {
-      items: [],
-    },
-    expectedState: {
+    args: [product],
+    state: getDefaultState(),
+    expectedState: getDefaultState({
       items: [
         {
           ...product,
           qty: 1,
         },
       ],
-    },
+    }),
   },
   {
     description:
       "addProductToCart() increments quantity when product already in cart",
     actionCreator: addProductToCart,
-    args: product,
-    state: {
-      items: [item],
-    },
-    expectedState: {
+    args: [product],
+    state: getDefaultState({ items: [item] }),
+    expectedState: getDefaultState({
       items: [
         {
           ...item,
           qty: 3,
         },
       ],
-    },
+    }),
   },
   {
     description: "removeProductFromCart() removes product from cart",
     actionCreator: removeProductFromCart,
-    args: product,
-    state: { items: [item] },
-    expectedState: { items: [] },
+    args: [product],
+    state: getDefaultState({ items: [item] }),
+    expectedState: getDefaultState({ items: [] }),
   },
   {
     description: "removeProductFromCart() does nothing if product not in cart",
     actionCreator: removeProductFromCart,
-    args: { ...product, sku: 2 },
-    state: { items: [item] },
-    expectedState: { items: [item] },
+    args: [{ ...product, sku: 2 }],
+    state: getDefaultState({ items: [item] }),
+    expectedState: getDefaultState({ items: [item] }),
   },
   {
     description: "clearCart() removes products from cart",
     actionCreator: clearCart,
-    args: undefined,
-    state: { items: [item] },
-    expectedState: { items: [] },
+    args: [],
+    state: getDefaultState({ items: [item] }),
+    expectedState: getDefaultState({ items: [] }),
   },
   {
     description: "incrementQuantity() increments product qty",
     actionCreator: incrementQuantity,
-    args: product,
-    state: { items: [item] },
-    expectedState: {
+    args: [product],
+    state: getDefaultState({ items: [item] }),
+    expectedState: getDefaultState({
       items: [
         {
           ...item,
           qty: 3,
         },
       ],
-    },
+    }),
   },
   {
     description: "incrementQuantity() does nothing if product not in cart",
     actionCreator: incrementQuantity,
-    args: { ...product, sku: 2 },
-    state: { items: [item] },
-    expectedState: { items: [item] },
+    args: [{ ...product, sku: 2 }],
+    state: getDefaultState({ items: [item] }),
+    expectedState: getDefaultState({ items: [item] }),
   },
   {
     description: "decrementQuantity() decrements product qty",
     actionCreator: decrementQuantity,
-    args: product,
-    state: { items: [item] },
-    expectedState: {
+    args: [product],
+    state: getDefaultState({ items: [item] }),
+    expectedState: getDefaultState({
       items: [
         {
           ...item,
           qty: 1,
         },
       ],
-    },
+    }),
   },
   {
     description: "decrementQuantity() removes product if qty is 0",
     actionCreator: decrementQuantity,
-    args: product,
-    state: {
+    args: [product],
+    state: getDefaultState({
       items: [
         {
           ...item,
           qty: 1,
         },
       ],
-    },
-    expectedState: { items: [] },
+    }),
+    expectedState: getDefaultState({ items: [] }),
   },
   {
     description: "decrementQuantity() does nothing if product not in cart",
     actionCreator: decrementQuantity,
-    args: { ...product, sku: 2 },
-    state: { items: [item] },
-    expectedState: { items: [item] },
+    args: [{ ...product, sku: 2 }],
+    state: getDefaultState({ items: [item] }),
+    expectedState: getDefaultState({ items: [item] }),
+  },
+  {
+    description: "toggleCartOpen() flips cart is open state",
+    actionCreator: toggleCartOpen,
+    args: [],
+    state: getDefaultState({ isCartOpen: true }),
+    expectedState: getDefaultState({ isCartOpen: false }),
   },
   {
     description: "does nothing on unknown action",
     actionCreator: () => ({
       type: "UNKNOWN_ACTION",
     }),
-    args: undefined,
-    state: { items: [item] },
-    expectedState: { items: [item] },
+    args: [],
+    state: getDefaultState({ items: [item] }),
+    expectedState: getDefaultState({ items: [item] }),
   },
 ]
 
@@ -150,7 +155,7 @@ describe("cart reducer", () => {
     expectedState,
   } of testCases) {
     it(description, () => {
-      const result = reducer(state, actionCreator(args))
+      const result = reducer(state, actionCreator(...args))
       expect(result).toMatchObject(expectedState)
     })
   }

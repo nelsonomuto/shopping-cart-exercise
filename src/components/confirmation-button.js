@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
+import PropTypes from "prop-types"
 import "../assets/css/components/confirmation-button.css"
 
 const ConfirmationButton = ({
@@ -33,7 +34,7 @@ const ConfirmationButton = ({
 
   const confirm = () => {
     setConfirming(false)
-    onConfirm && onConfirm()
+    onConfirm()
   }
 
   return (
@@ -56,6 +57,17 @@ const ConfirmationButton = ({
       )}
     </div>
   )
+}
+
+ConfirmationButton.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
+  onConfirm: PropTypes.func.isRequired,
+  confirmText: PropTypes.string,
+  cancelText: PropTypes.string,
+  className: PropTypes.string,
 }
 
 export default ConfirmationButton

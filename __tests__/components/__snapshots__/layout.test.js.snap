@@ -30,7 +30,7 @@ exports[`<Layout /> matches snapshot 1`] = `
       <main />
       <footer />
     </div>
-    <Cart />
+    <CartSidebar />
   </CartStoreProvider>
 </Fragment>
 `;
