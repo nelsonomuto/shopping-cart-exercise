@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import "../assets/css/cart.css"
 import "../assets/css/header.css"
 import { toggleCartOpen } from "../store/cart/actions"
 import { useCart } from "../store/cart/useCart"

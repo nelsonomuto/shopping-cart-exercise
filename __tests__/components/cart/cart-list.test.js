@@ -1,9 +1,14 @@
-import { shallow } from "enzyme"
+import { mount, shallow } from "enzyme"
 import React from "react"
 import CartItem from "../../../src/components/cart/cart-item"
 import CartList from "../../../src/components/cart/cart-list"
-import { clearCart } from "../../../src/store/cart/actions"
 import { useCart } from "../../../src/store/cart/useCart"
+import ConfirmationButton from "../../../src/components/confirmation-button"
+import { clearCart } from "../../../src/store/cart/actions"
+
+const { getDefaultState } = jest.requireActual(
+  "../../../src/store/cart/useCart"
+)
 
 const mockProduct = {
   sku: "fake-sku",
@@ -12,14 +17,12 @@ const mockProduct = {
   image: "fake-image-url",
 }
 
-const mockState = {
-  items: [
-    {
-      ...mockProduct,
-      qty: 1,
-    },
-  ],
+const mockItem = {
+  ...mockProduct,
+  qty: 1,
 }
+
+const mockState = getDefaultState({ items: [mockItem] })
 
 // Mock useCart which is required in the component.
 // Don't test that side effects from useCart actually happen,
@@ -46,9 +49,20 @@ describe("<CartList />", () => {
   })
 
   it("clear cart button dispatches clear cart action", () => {
-    const component = shallow(<CartList />)
-    const button = component.find(".cart-list-clear-button")
-    button.simulate("click")
+    useCart.mockImplementationOnce(() => [mockState, mockDispatch])
+    const component = mount(<CartList />)
+    // click the clear cart button > confirmation
+    component
+      .find(ConfirmationButton)
+      .find("button")
+      .simulate("click")
+    component.update()
+    // confirmation > click on confirm button
+    component
+      .find(ConfirmationButton)
+      .find("button")
+      .at(1)
+      .simulate("click")
     expect(mockDispatch).toHaveBeenCalledWith(clearCart())
   })
 })

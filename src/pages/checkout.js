@@ -1,7 +1,6 @@
 import React from "react"
-import "../assets/css/cart.css"
-import CartList from "../components/cart/cart-list"
-import CartSummary from "../components/cart/cart-summary"
+import "../assets/css/checkout.css"
+import CheckoutCart from "../components/cart/checkout-cart"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { CartStoreProvider } from "../store/cart/useCart"
@@ -11,8 +10,7 @@ const CheckoutPage = () => (
     <Layout>
       <SEO title="Checkout" />
       <h1>Checkout</h1>
-      <CartList />
-      <CartSummary />
+      <CheckoutCart />
     </Layout>
   </CartStoreProvider>
 )

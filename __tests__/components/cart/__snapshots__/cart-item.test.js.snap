@@ -21,9 +21,20 @@ exports[`<CartItem /> matches snapshot 1`] = `
       fake-title
     </div>
     <div
-      className="cart-item-price"
+      className="cart-item-price-row"
     >
-      $ 999.99
+      <span
+        className="cart-item-price"
+      >
+        $ 999.99
+      </span>
+       
+      <button
+        className="cart-item-remove-button"
+        onClick={[Function]}
+      >
+        remove
+      </button>
     </div>
   </div>
   <div

@@ -165,34 +165,44 @@
   color: rgb(87, 87, 87);
 }
 
-.cart-list-clear-button {
-  width: 100%;
+.cart-item-price-row {
+  vertical-align: text-bottom;
+}
+.cart-item-remove-button {
   color: rgb(11, 144, 221);
   cursor: pointer;
   outline: 0;
   border: 0;
-  margin: 10px 0 0;
-  padding: 20px;
+  margin: 0 6px;
+  text-decoration: none;
 }
-.cart-list-clear-button:hover {
-  width: 100%;
+.cart-item-remove-button:hover {
   color: rgb(71, 171, 230);
-  background: #eee;
+  text-decoration: underline;
 }
 
-.cart-subtotal-label {
+.cart-sidebar-summary-container .cart-subtotal {
+  margin: 10px 0;
+  text-align: right;
+}
+.cart-sidebar-summary-container .cart-subtotal .cart-subtotal-label {
   font-weight: bold;
   font-size: 0.8em;
   color: #999;
   text-transform: uppercase;
   line-height: 1em;
 }
-.cart-subtotal-amt {
+.cart-sidebar-summary-container .cart-subtotal .cart-subtotal-amt {
   font-weight: bold;
   font-size: 1.2em;
   color: #222;
 }
 
-.cart-sidebar-summary-container .cart-subtotal {
-  margin: 10px 0;
+.cart-summary {
+  text-align: right;
+  margin: 20px auto;
+}
+
+.cart-summary .cart-summary-total {
+  font-weight: bold;
 }

@@ -15,7 +15,9 @@ const CartSummary = () => {
         Shipping:{" "}
         {summary.shippingCost === 0 ? "FREE" : dollars(summary.shippingCost)}
       </div>
-      <div>Total: {dollars(summary.totalCost)}</div>
+      <div className="cart-summary-total">
+        Total: {dollars(summary.totalCost)}
+      </div>
     </div>
   )
 }

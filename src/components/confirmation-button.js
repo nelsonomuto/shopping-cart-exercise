@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useState } from "react"
 import "../assets/css/components/confirmation-button.css"
 
-const ConfirmationButton = ({ children, onConfirm }) => {
+const ConfirmationButton = ({
+  children,
+  onConfirm,
+  confirmText = "I'm Sure",
+  cancelText = "Nevermind",
+  className = "",
+}) => {
   const [isConfirming, setConfirming] = useState(false)
   const containerRef = useRef(null)
 
@@ -27,22 +33,22 @@ const ConfirmationButton = ({ children, onConfirm }) => {
 
   const confirm = () => {
     setConfirming(false)
-    onConfirm()
+    onConfirm && onConfirm()
   }
 
   return (
-    <div className="confirmation-button" ref={containerRef}>
+    <div className={`confirmation-button ${className}`} ref={containerRef}>
       {isConfirming ? (
         <>
-          <button className="confirm-yes" key="confirm" onClick={confirm}>
-            I'm Sure
-          </button>
           <button
             className="confirm-no"
             key="cancel-confirm"
             onClick={() => setConfirming(false)}
           >
-            Nevermind
+            {cancelText}
+          </button>
+          <button className="confirm-yes" key="confirm" onClick={confirm}>
+            {confirmText}
           </button>
         </>
       ) : (

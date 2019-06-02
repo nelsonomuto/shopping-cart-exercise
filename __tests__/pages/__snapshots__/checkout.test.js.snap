@@ -13,8 +13,7 @@ exports[`CheckoutPage renders checkout page component 1`] = `
     <h1>
       Checkout
     </h1>
-    <CartList />
-    <CartSummary />
+    <CheckoutCart />
   </Layout>
 </CartStoreProvider>
 `;

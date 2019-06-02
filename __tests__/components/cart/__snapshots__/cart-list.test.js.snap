@@ -36,11 +36,10 @@ exports[`<CartList /> matches snapshot 1`] = `
       key="fake-sku"
     />
   </div>
-  <button
-    className="cart-list-clear-button"
-    onClick={[Function]}
+  <ConfirmationButton
+    onConfirm={[Function]}
   >
     Clear Cart
-  </button>
+  </ConfirmationButton>
 </div>
 `;

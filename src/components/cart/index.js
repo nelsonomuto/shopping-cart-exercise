@@ -7,7 +7,7 @@ import CartList from "./cart-list"
 import CartPortal from "./cart-portal"
 
 const Cart = () => {
-  const [{ isCartOpen, summary }, dispatch] = useCart()
+  const [{ isCartOpen, items, summary }, dispatch] = useCart()
   const containerRef = useRef(null)
 
   const toggleCart = () => dispatch(toggleCartOpen())
@@ -54,9 +54,11 @@ const Cart = () => {
                 {dollars(summary.subtotal)}
               </div>
             </div>
-            <Link to="/checkout" className="cart-checkout-button">
-              Checkout
-            </Link>
+            {items.length > 0 && (
+              <Link to="/checkout" className="cart-checkout-button">
+                Checkout
+              </Link>
+            )}
           </div>
         </div>
       </div>

@@ -19,7 +19,9 @@ exports[`<CartSummary /> matches snapshot 1`] = `
      
     $ 80.00
   </div>
-  <div>
+  <div
+    className="cart-summary-total"
+  >
     Total: 
     $ 2,279.98
   </div>
@@ -45,7 +47,9 @@ exports[`<CartSummary /> shows free shipping when shipping cost is 0 1`] = `
      
     FREE
   </div>
-  <div>
+  <div
+    className="cart-summary-total"
+  >
     Total: 
     $ 2,279.98
   </div>
