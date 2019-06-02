@@ -81,7 +81,10 @@
   background: white;
   transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   height: 100vh;
-  transform: translateX(-100%);
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
 }
 
 .cart-portal-container.cart-animate-open .cart-sidebar-container {
@@ -91,7 +94,7 @@
 
 .cart-portal-container.cart-animate-closed .cart-sidebar-container {
   opacity: 0;
-  transform: translateX(-100%);
+  transform: translateX(100%);
   pointer-events: auto;
 }
 
