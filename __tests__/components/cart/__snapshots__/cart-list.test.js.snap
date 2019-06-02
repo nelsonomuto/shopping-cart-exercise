@@ -18,25 +18,24 @@ exports[`<CartList /> (with no items) matches snapshot (empty state) 1`] = `
 
 exports[`<CartList /> matches snapshot 1`] = `
 <div
-  className="cart-list"
+  className="cart-list-container"
 >
-  <ul>
-    <li
-      key="fake-sku"
-    >
-      <CartItem
-        item={
-          Object {
-            "image": "fake-image-url",
-            "price": 999.99,
-            "qty": 1,
-            "sku": "fake-sku",
-            "title": "fake-title",
-          }
+  <div
+    className="cart-list"
+  >
+    <CartItem
+      item={
+        Object {
+          "image": "fake-image-url",
+          "price": 999.99,
+          "qty": 1,
+          "sku": "fake-sku",
+          "title": "fake-title",
         }
-      />
-    </li>
-  </ul>
+      }
+      key="fake-sku"
+    />
+  </div>
   <button
     className="cart-list-clear-button"
     onClick={[Function]}

@@ -21,14 +21,12 @@ const CartList = ({ onShop }) => {
   }
 
   return (
-    <div className="cart-list">
-      <ul>
+    <div className="cart-list-container">
+      <div className="cart-list">
         {items.map(item => (
-          <li key={item.sku}>
-            <CartItem item={item} />
-          </li>
+          <CartItem item={item} key={item.sku} />
         ))}
-      </ul>
+      </div>
       <button
         className="cart-list-clear-button"
         onClick={() => dispatch(clearCart())}
