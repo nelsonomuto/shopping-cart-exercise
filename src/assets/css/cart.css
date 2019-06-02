@@ -1,3 +1,7 @@
+.cart-list {
+  margin-bottom: 16px;
+}
+
 .cart-item {
   display: inline-grid;
   grid-template-columns: auto 70% 60px;
