@@ -6,7 +6,7 @@ import ConfirmationButton from "../confirmation-button"
 import CartList from "./cart-list"
 import CartSummary from "./cart-summary"
 
-const CheckoutCart = () => {
+const CartCheckout = () => {
   const [{ items, summary }, dispatch] = useCart()
   return (
     <>
@@ -29,4 +29,4 @@ const CheckoutCart = () => {
   )
 }
 
-export default CheckoutCart
+export default CartCheckout

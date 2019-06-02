@@ -4,6 +4,7 @@ import CartItem from "../../../src/components/cart/cart-item"
 import {
   decrementQuantity,
   incrementQuantity,
+  removeProductFromCart,
 } from "../../../src/store/cart/actions"
 import { useCart } from "../../../src/store/cart/useCart"
 
@@ -49,5 +50,12 @@ describe("<CartItem />", () => {
     const incrementButton = component.find(".cart-item-update-qty-button").at(1)
     incrementButton.simulate("click")
     expect(mockDispatch).toHaveBeenCalledWith(incrementQuantity(mockItem))
+  })
+
+  it("clicking remove button calls remove action", () => {
+    const component = shallow(<CartItem item={mockItem} />)
+    const removeButton = component.find(".cart-item-remove-button")
+    removeButton.simulate("click")
+    expect(mockDispatch).toHaveBeenCalledWith(removeProductFromCart(mockItem))
   })
 })

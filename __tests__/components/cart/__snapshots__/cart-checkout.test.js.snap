@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartCheckout /> (with no items) matches snapshot (empty state) 1`] = `
+<Fragment>
+  <CartList />
+  <CartSummary />
+</Fragment>
+`;
+
+exports[`<CartCheckout /> matches snapshot 1`] = `
+<Fragment>
+  <CartList />
+  <CartSummary />
+  <ConfirmationButton
+    cancelText="Cancel"
+    className="confirm-order-button"
+    confirmText="Confirm order for $ 1,164.99"
+    onConfirm={[Function]}
+  >
+    Place Order
+  </ConfirmationButton>
+</Fragment>
+`;
