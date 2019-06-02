@@ -6,7 +6,7 @@ import { useCart } from "../../store/cart/useCart"
 import CartList from "./cart-list"
 import CartPortal from "./cart-portal"
 
-const Cart = () => {
+const CartSidebar = () => {
   const [{ isCartOpen, items, summary }, dispatch] = useCart()
   const containerRef = useRef(null)
 
@@ -66,4 +66,4 @@ const Cart = () => {
   )
 }
 
-export default Cart
+export default CartSidebar

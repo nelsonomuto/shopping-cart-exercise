@@ -2,7 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import "../assets/css/layout.css"
 import { CartStoreProvider } from "../store/cart/useCart"
-import Cart from "./cart"
+import CartSidebar from "./cart/cart-sidebar"
 import Header from "./header"
 
 // Adding CartStoreProvider to entire layout because we
@@ -31,7 +31,7 @@ const Layout = ({ children }) => (
         <main>{children}</main>
         <footer />
       </div>
-      <Cart />
+      <CartSidebar />
     </CartStoreProvider>
   </>
 )

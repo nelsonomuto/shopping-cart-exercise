@@ -1,6 +1,6 @@
 import React from "react"
 import "../assets/css/checkout.css"
-import CheckoutCart from "../components/cart/checkout-cart"
+import CartCheckout from "../components/cart/cart-checkout"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { CartStoreProvider } from "../store/cart/useCart"
@@ -10,7 +10,7 @@ const CheckoutPage = () => (
     <Layout>
       <SEO title="Checkout" />
       <h1>Checkout</h1>
-      <CheckoutCart />
+      <CartCheckout />
     </Layout>
   </CartStoreProvider>
 )

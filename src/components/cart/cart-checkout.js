@@ -1,12 +1,13 @@
 import React from "react"
 import { dollars } from "../../services/formatString"
 import { useCart } from "../../store/cart/useCart"
+import { clearCart } from "../../store/cart/actions"
 import ConfirmationButton from "../confirmation-button"
 import CartList from "./cart-list"
 import CartSummary from "./cart-summary"
 
 const CheckoutCart = () => {
-  const [{ items, summary }] = useCart()
+  const [{ items, summary }, dispatch] = useCart()
   return (
     <>
       <CartList />
@@ -16,7 +17,10 @@ const CheckoutCart = () => {
           className="confirm-order-button"
           confirmText={`Confirm order for ${dollars(summary.totalCost)}`}
           cancelText="Cancel"
-          onConfirm={() => alert("Your order has been confirmed!")}
+          onConfirm={() => {
+            alert("Your order has been confirmed!")
+            dispatch(clearCart())
+          }}
         >
           Place Order
         </ConfirmationButton>
