@@ -45,6 +45,14 @@ describe("<CartSidebar />", () => {
     const component = shallow(<CartSidebar />)
     expect(component).toMatchSnapshot()
   })
+  it("matches snapshot (not open)", () => {
+    useCart.mockImplementation(() => [
+      getDefaultState({ items: [mockItem], isCartOpen: false }),
+      mockDispatch,
+    ])
+    const component = shallow(<CartSidebar />)
+    expect(component).toMatchSnapshot()
+  })
 
   it("close button closes cart", () => {
     const component = mount(<CartSidebar />)
