@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> matches snapshot 1`] = `
+<header
+  className="app-header"
+>
+  <div
+    className="app-header-items"
+  >
+    <h1
+      style={
+        Object {
+          "margin": 0,
+          "position": "relative",
+        }
+      }
+    >
+      <mockConstructor
+        style={
+          Object {
+            "color": "white",
+            "textDecoration": "none",
+          }
+        }
+        to="/"
+      >
+        TEST
+      </mockConstructor>
+    </h1>
+    <button
+      className="cart-button"
+      onClick={[Function]}
+    >
+      CART
+      <span
+        className="cart-button-item-count"
+      >
+        4
+      </span>
+    </button>
+  </div>
+</header>
+`;

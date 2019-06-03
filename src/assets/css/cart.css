@@ -1,0 +1,208 @@
+.cart-list {
+  margin-bottom: 16px;
+}
+
+.cart-item {
+  display: inline-grid;
+  grid-template-columns: auto 70% 60px;
+  grid-template-rows: auto;
+  column-gap: 10px;
+  row-gap: 1em;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+  padding: 16px 0;
+}
+
+.cart-item .cart-item-image {
+  align-self: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart-item .cart-item-image > img {
+  margin: 0;
+}
+
+.cart-item .cart-item-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item-title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cart-item-price {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.cart-item-controls .cart-item-update-qty-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  outline: 0;
+  border: 0;
+  padding: 0;
+  color: rgb(156, 156, 156);
+  line-height: normal;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.cart-item-controls .cart-item-update-qty-button:hover {
+  background: #eee;
+  color: #222;
+}
+.cart-item-controls .cart-item-qty {
+  margin: 4px;
+  font-size: 0.9em;
+}
+
+.cart-portal-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.cart-portal-container.cart-animate-open {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.cart-portal-container .cart-sidebar-container {
+  width: 30em;
+  background: white;
+  transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+}
+
+.cart-portal-container.cart-animate-open .cart-sidebar-container {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cart-portal-container.cart-animate-closed .cart-sidebar-container {
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: auto;
+}
+
+.cart-portal-container.cart-animate-closed {
+  background: rgba(0, 0, 0, 0);
+  pointer-events: none;
+}
+
+.cart-sidebar-container {
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.cart-portal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  outline: 0;
+  border: 0;
+}
+
+.cart-portal-close-button::after {
+  width: 35px;
+  height: 35px;
+  content: "\D7";
+  border-radius: 50%;
+  background: #e4e4e4;
+  display: inline-block;
+  line-height: 1em;
+  font-size: 30px;
+  cursor: pointer;
+}
+.cart-portal-close-button:hover::after {
+  background: #efefef;
+  color: rgb(71, 171, 230);
+}
+
+.cart-sidebar-items-container {
+  overflow: scroll;
+  padding: 16px;
+}
+.cart-sidebar-summary-container {
+  width: 100%;
+  flex: 1 1 auto;
+  padding: 16px;
+  background: #ddd;
+}
+.cart-checkout-button {
+  font-size: 1.2em;
+  font-weight: bold;
+  width: 100%;
+  padding: 20px;
+  background: rgb(0, 190, 73);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #333;
+}
+.cart-checkout-button:hover {
+  background: rgb(74, 251, 141);
+  color: rgb(87, 87, 87);
+}
+
+.cart-item-price-row {
+  vertical-align: text-bottom;
+}
+.cart-item-remove-button {
+  color: rgb(11, 144, 221);
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  margin: 0 6px;
+  text-decoration: none;
+}
+.cart-item-remove-button:hover {
+  color: rgb(71, 171, 230);
+  text-decoration: underline;
+}
+
+.cart-sidebar-summary-container .cart-subtotal {
+  margin: 10px 0;
+  text-align: right;
+}
+.cart-sidebar-summary-container .cart-subtotal .cart-subtotal-label {
+  font-weight: bold;
+  font-size: 0.8em;
+  color: #999;
+  text-transform: uppercase;
+  line-height: 1em;
+}
+.cart-sidebar-summary-container .cart-subtotal .cart-subtotal-amt {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #222;
+}
+
+.cart-summary {
+  text-align: right;
+  margin: 20px auto;
+}
+
+.cart-summary .cart-summary-total {
+  font-weight: bold;
+}

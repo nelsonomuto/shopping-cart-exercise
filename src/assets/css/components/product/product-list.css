@@ -2,13 +2,26 @@
   border-bottom: 1px solid lightgray;
 }
 .product-add-to-cart button {
-  background-color: #0053a0;
+  background: #3077fa;
   color: #ffffff;
   text-align: center;
   text-transform: uppercase;
-  padding: .8rem .5rem;
-  font-size: .8rem;
-  border-radius: .5rem;
+  padding: 0.8rem 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   font-weight: 700;
+  padding: 12px 14px;
+}
+
+.product-add-to-cart button:hover {
+  background: #5387e9;
+}
+
+.product-sku {
+  color: #999;
+}
+
+.product-price {
+  text-align: right;
 }

@@ -1,0 +1,22 @@
+.confirm-order-button > button {
+  background: #3077fa;
+  color: #fff;
+}
+.confirm-order-button > button:hover {
+  background: #5387e9;
+  color: #fff;
+}
+.confirm-order-button > button.confirm-yes {
+  background: rgb(15, 190, 59);
+}
+.confirm-order-button > button.confirm-yes:hover {
+  background: rgb(51, 233, 96);
+}
+.confirm-order-button > button.confirm-no {
+  background: transparent;
+  color: #222;
+}
+.confirm-order-button > button.confirm-no:hover {
+  background: #eee;
+  color: #222;
+}

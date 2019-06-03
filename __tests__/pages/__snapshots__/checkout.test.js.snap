@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutPage renders checkout page component 1`] = `
+<CartStoreProvider>
+  <Layout>
+    <SEO
+      description=""
+      keywords={Array []}
+      lang="en"
+      meta={Array []}
+      title="Checkout"
+    />
+    <h1>
+      Checkout
+    </h1>
+    <CartCheckout />
+  </Layout>
+</CartStoreProvider>
+`;

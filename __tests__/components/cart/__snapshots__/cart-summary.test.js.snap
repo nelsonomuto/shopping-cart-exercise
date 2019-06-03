@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartSummary /> matches snapshot 1`] = `
+<div
+  className="cart-summary"
+>
+  <div
+    className="cart-subtotal"
+  >
+    Subtotal: 
+    $ 1,999.98
+  </div>
+  <div>
+    Tax: 
+    $ 200.00
+  </div>
+  <div>
+    Shipping:
+     
+    $ 80.00
+  </div>
+  <div
+    className="cart-summary-total"
+  >
+    Total: 
+    $ 2,279.98
+  </div>
+</div>
+`;
+
+exports[`<CartSummary /> shows free shipping when shipping cost is 0 1`] = `
+<div
+  className="cart-summary"
+>
+  <div
+    className="cart-subtotal"
+  >
+    Subtotal: 
+    $ 1,999.98
+  </div>
+  <div>
+    Tax: 
+    $ 200.00
+  </div>
+  <div>
+    Shipping:
+     
+    FREE
+  </div>
+  <div
+    className="cart-summary-total"
+  >
+    Total: 
+    $ 2,279.98
+  </div>
+</div>
+`;

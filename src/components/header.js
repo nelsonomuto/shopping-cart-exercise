@@ -1,50 +1,43 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import "../assets/css/cart.css"
+import "../assets/css/header.css"
+import { toggleCartOpen } from "../store/cart/actions"
+import { useCart } from "../store/cart/useCart"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={ {
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    } }
-  >
-    <div
-      style={ {
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `0 1.0875rem`,
-      } }
-    >
-      <h1 style={{ margin: 0, position: `relative` }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
+const Header = ({ siteTitle }) => {
+  const [{ items }, dispatch] = useCart()
+
+  const itemCount = items.reduce((acc, item) => acc + item.qty, 0)
+
+  return (
+    <header className="app-header">
+      <div className="app-header-items">
+        <h1 style={{ margin: 0, position: `relative` }}>
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}
+          >
+            {siteTitle}
+          </Link>
+        </h1>
+        <button
+          onClick={() => {
+            dispatch(toggleCartOpen())
           }}
-        >
-          { siteTitle }
-        </Link>
-        <Link
-          to="/cart"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-            fontSize: `1rem`,
-            float: `right`,
-            position: `absolute`,
-            top: `1.5rem`,
-            right: `1.0875rem`,
-            fontWeight: `700`
-          }}
+          className="cart-button"
         >
           CART
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+          <span className="cart-button-item-count">{itemCount}</span>
+        </button>
+      </div>
+    </header>
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

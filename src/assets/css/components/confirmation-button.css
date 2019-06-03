@@ -1,0 +1,28 @@
+.confirmation-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.confirmation-button > button {
+  flex: 1 1 auto;
+  padding: 20px;
+  background: transparent;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #333;
+}
+.confirmation-button > button:hover {
+  color: rgb(17, 134, 243);
+  background: #eee;
+}
+.confirmation-button .confirm-yes {
+  color: green;
+}
+.confirmation-button .confirm-yes {
+  background: tomato;
+  color: #fff;
+}

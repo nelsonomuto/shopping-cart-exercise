@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartItem /> matches snapshot 1`] = `
+<div
+  className="cart-item"
+>
+  <div
+    className="cart-item-image"
+  >
+    <img
+      alt="fake-title"
+      src="fake-image-url"
+    />
+  </div>
+  <div
+    className="cart-item-details"
+  >
+    <div
+      className="cart-item-title"
+    >
+      fake-title
+    </div>
+    <div
+      className="cart-item-price-row"
+    >
+      <span
+        className="cart-item-price"
+      >
+        $ 999.99
+      </span>
+       
+      <button
+        className="cart-item-remove-button"
+        onClick={[Function]}
+      >
+        remove
+      </button>
+    </div>
+  </div>
+  <div
+    className="cart-item-controls"
+  >
+    <button
+      className="cart-item-update-qty-button"
+      onClick={[Function]}
+    >
+      -
+    </button>
+    <span
+      className="cart-item-qty"
+    />
+    <button
+      className="cart-item-update-qty-button"
+      onClick={[Function]}
+    >
+      +
+    </button>
+  </div>
+</div>
+`;
