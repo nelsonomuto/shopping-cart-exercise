@@ -39,6 +39,7 @@ describe("<CartSidebar />", () => {
 
   afterEach(() => {
     document.addEventListener = jest.fn()
+    document.removeEventListener = jest.fn()
   })
 
   it("matches snapshot", () => {
@@ -52,6 +53,16 @@ describe("<CartSidebar />", () => {
     ])
     const component = shallow(<CartSidebar />)
     expect(component).toMatchSnapshot()
+  })
+
+  it("calls effect on update when cart is not open", () => {
+    useCart.mockImplementation(() => [
+      getDefaultState({ items: [mockItem], isCartOpen: false }),
+      mockDispatch,
+    ])
+    const component = mount(<CartSidebar />)
+    component.update()
+    expect(document.removeEventListener).toHaveBeenCalled()
   })
 
   it("close button closes cart", () => {
@@ -105,7 +116,6 @@ describe("<CartSidebar />", () => {
       mockDispatch,
     ])
     const map = {}
-    document.removeEventListener = jest.fn()
     document.addEventListener = jest.fn((event, cb) => {
       map[event] = cb
     })
