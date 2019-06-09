@@ -1,36 +1,15 @@
 import { Link } from "gatsby"
-import React, { useEffect, useRef } from "react"
+import React, { useRef } from "react"
 import { dollars } from "../../services/formatString"
 import { toggleCartOpen } from "../../store/cart/actions"
-import { useCart } from "../../store/cart/useCart"
+import { connectStore } from "../../store/cart/useCart"
 import CartList from "./cart-list"
 import CartPortal from "./cart-portal"
+import { useOnClickOutside } from "../../services/useClickOutside"
 
-const CartSidebar = () => {
-  const [{ isCartOpen, items, summary }, dispatch] = useCart()
+const CartSidebar = ({ isCartOpen, items, summary, toggleCartOpen }) => {
   const containerRef = useRef(null)
-
-  const toggleCart = () => dispatch(toggleCartOpen())
-
-  const onClickOutside = e => {
-    if (containerRef.current.contains(e.target)) {
-      // inside
-      return
-    }
-    // outside
-    toggleCart()
-  }
-
-  useEffect(() => {
-    if (isCartOpen) {
-      document.addEventListener("mousedown", onClickOutside)
-      return () => {
-        document.removeEventListener("mousedown", onClickOutside)
-      }
-    } else {
-      document.removeEventListener("mousedown", onClickOutside)
-    }
-  }, [isCartOpen])
+  useOnClickOutside(containerRef, toggleCartOpen)
 
   return (
     <CartPortal>
@@ -65,4 +44,4 @@ const CartSidebar = () => {
   )
 }
 
-export default CartSidebar
+export default connectStore(null, { toggleCartOpen })(CartSidebar)

@@ -21,6 +21,7 @@ export const deserializeStore = fromStore => {
 
 const {
   store,
+  connectStore,
   StoreProvider: CartStoreProvider,
   useStore: useCart,
 } = createContextStore("Cart", reducer, getDefaultState(), {
@@ -32,3 +33,4 @@ const {
 export { store }
 export { CartStoreProvider }
 export { useCart }
+export { connectStore }

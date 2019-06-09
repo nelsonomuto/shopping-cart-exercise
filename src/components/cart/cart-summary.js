@@ -1,10 +1,8 @@
 import React from "react"
 import { dollars } from "../../services/formatString"
-import { useCart } from "../../store/cart/useCart"
+import { connectStore } from "../../store/cart/useCart"
 
-const CartSummary = () => {
-  const [{ items, summary }] = useCart()
-
+export const CartSummary = ({ items, summary }) => {
   if (items.length === 0) return null
 
   return (
@@ -22,4 +20,4 @@ const CartSummary = () => {
   )
 }
 
-export default CartSummary
+export default connectStore()(CartSummary)

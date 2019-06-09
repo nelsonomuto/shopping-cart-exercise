@@ -1,13 +1,11 @@
 import { Link } from "gatsby"
 import React from "react"
 import { clearCart } from "../../store/cart/actions"
-import { useCart } from "../../store/cart/useCart"
+import { connectStore } from "../../store/cart/useCart"
 import ConfirmationButton from "../confirmation-button"
 import CartItem from "./cart-item"
 
-const CartList = ({ onShop }) => {
-  const [{ items }, dispatch] = useCart()
-
+export const CartList = ({ onShop, items, clearCart }) => {
   if (items.length === 0) {
     return (
       <div className="cart-list cart-list-empty">
@@ -35,4 +33,4 @@ const CartList = ({ onShop }) => {
   )
 }
 
-export default CartList
+export default connectStore(({ items }) => ({ items }), { clearCart })(CartList)

@@ -5,14 +5,14 @@ import {
   incrementQuantity,
   removeProductFromCart,
 } from "../../store/cart/actions"
-import { useCart } from "../../store/cart/useCart"
+import { connectStore } from "../../store/cart/useCart"
 
-const CartItem = ({ item }) => {
-  const [, dispatch] = useCart()
-  const onIncrement = () => dispatch(incrementQuantity(item))
-  const onDecrement = () => dispatch(decrementQuantity(item))
-  const onRemove = () => dispatch(removeProductFromCart(item))
-
+export const CartItem = ({
+  item,
+  incrementQuantity,
+  decrementQuantity,
+  removeProductFromCart,
+}) => {
   return (
     <div className="cart-item">
       <div className="cart-item-image">
@@ -22,17 +22,26 @@ const CartItem = ({ item }) => {
         <div className="cart-item-title">{item.title}</div>
         <div className="cart-item-price-row">
           <span className="cart-item-price">{dollars(item.price)}</span>{" "}
-          <button className="cart-item-remove-button" onClick={onRemove}>
+          <button
+            className="cart-item-remove-button"
+            onClick={() => removeProductFromCart(item)}
+          >
             remove
           </button>
         </div>
       </div>
       <div className="cart-item-controls">
-        <button className="cart-item-update-qty-button" onClick={onDecrement}>
+        <button
+          className="cart-item-update-qty-button"
+          onClick={() => decrementQuantity(item)}
+        >
           -
         </button>
         <span className="cart-item-qty">{item.qty}</span>
-        <button className="cart-item-update-qty-button" onClick={onIncrement}>
+        <button
+          className="cart-item-update-qty-button"
+          onClick={() => incrementQuantity(item)}
+        >
           +
         </button>
       </div>
@@ -40,4 +49,8 @@ const CartItem = ({ item }) => {
   )
 }
 
-export default CartItem
+export default connectStore(null, {
+  incrementQuantity,
+  decrementQuantity,
+  removeProductFromCart,
+})(CartItem)

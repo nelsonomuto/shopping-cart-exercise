@@ -46,9 +46,27 @@ export default function createContextStore(
     return [state, dispatch]
   }
 
+  const connectStore = (
+    mapStateToProps,
+    mapDispatchToProps = {}
+  ) => Component => props => {
+    const [state, dispatch] = useStore()
+
+    const nextProps = mapStateToProps ? mapStateToProps(state) : { ...state }
+
+    Object.keys(mapDispatchToProps).forEach(
+      prop =>
+        (nextProps[prop] = (...args) =>
+          dispatch(mapDispatchToProps[prop](...args)))
+    )
+
+    return <Component {...nextProps} {...props} />
+  }
+
   return {
     store,
     useStore,
     StoreProvider,
+    connectStore,
   }
 }

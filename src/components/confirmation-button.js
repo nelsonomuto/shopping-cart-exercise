@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useRef, useState } from "react"
 import PropTypes from "prop-types"
 import "../assets/css/components/confirmation-button.css"
+import { useOnClickOutside } from "../services/useClickOutside"
 
 const ConfirmationButton = ({
   children,
@@ -11,26 +12,7 @@ const ConfirmationButton = ({
 }) => {
   const [isConfirming, setConfirming] = useState(false)
   const containerRef = useRef(null)
-
-  const onClickOutside = e => {
-    if (containerRef.current.contains(e.target)) {
-      // inside
-      return
-    }
-    // outside
-    setConfirming(false)
-  }
-
-  useEffect(() => {
-    if (isConfirming) {
-      document.addEventListener("mousedown", onClickOutside)
-      return () => {
-        document.removeEventListener("mousedown", onClickOutside)
-      }
-    } else {
-      document.removeEventListener("mousedown", onClickOutside)
-    }
-  }, [isConfirming])
+  useOnClickOutside(containerRef, () => setConfirming(false))
 
   const confirm = () => {
     setConfirming(false)
